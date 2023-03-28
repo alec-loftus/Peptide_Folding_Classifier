@@ -1,38 +1,40 @@
 import pandas as pd
-import sklearn
+import numpy as np
+from sklearn.model_selection import train_test_split
 import argparse
 from glob import glob
 import os
+import pdb
 
 parser = argparse.ArgumentParser(description='Split data into test/train')
 parser.add_argument('-i', '--input', help='input path to data folder', required=True)
 parser.add_argument('-o', '--output', help='output folder path for test/train csvs', required=False, default='./output')
 parser.add_argument('-s', '--splitpercent', help='percentage of data to store as test', required=False, default='30')
-parser.add_argument('-l', '--label', help='name of data label column', required=False, default='isFolded')
-parser.add_argument('-t', '--treshold', help='scoring threshold', required=False, default=None)
-parser.add_argument('-j', '--judgement', help='column to judge off of', required=False, default='RgEnd')
+parser.add_argument('-t', '--threshold', help='scoring threshold', required=False, default=None)
+parser.add_argument('-d', '--data', help='list of column names of data to input', nargs='*', required=False, default=None)
+parser.add_argument('-p', '--predictingColumn', help='name of column to predict off of', required=True)
 
 def combine(files):
     dataframes = []
     finalData = []
     for file in files:
-        df = pd.read_table(file)
+        df = pd.read_csv(file)
         dataframes.append(df)
-
-    finalData = dataframes[0]
-
-    for df in (1, dataframes):
-        finalData = finalData.append(df)
+    
+    finalData = pd.concat(dataframes)
 
     return finalData
 
-def score(treshold, column, data, labelName):
-    data[labelName]=np.where(df[column]<treshold,True,False)
+def score(treshold, column, data, name):
+    data[name]=np.where(data[column]<treshold,True,False)
 
-def split(data, labelName, percent, output):
+def split(data, labelName, percent, output, inputLabels=None):
     y = data[labelName]
-    x = data.drop(labelName)
-    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=percent/float(100), random_state=42, shuffle=True)
+    x = data.drop(labelName, axis=1)
+    if inputLabels != None:
+        x = data[inputLabels]
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=percent/float(100), random_state=42, shuffle=True)
+    os.mkdir(output)
     x_train.to_csv(os.path.join(output, 'x_train.csv'))
     print(f'x_train.csv saved to {output}!')
     y_train.to_csv(os.path.join(output, 'y_train.csv'))
@@ -46,12 +48,20 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     path = os.path.join(args.input, '*.csv')
-    listOfiles = glob(path)
+    listOFiles = glob(path)
     
-    df = combine(listOfFiles)
+    df1 = combine(listOFiles)
+    
+    print(df1.columns)
 
+    labelColumn = args.predictingColumn
     if args.threshold != None:
-        df = score(args.threshold, args.judgement, df, args.label)
-        df = df.drop(args.judgement)
+        score(int(args.threshold), labelColumn, df1, 'isFolded')
+        print(df1.columns)
+        df1 = df1.drop(labelColumn, axis=1)
+        labelColumn = 'isFolded'
 
-    split(df, args.label, args.splitpercent, args.output)
+    if args.data == None:
+        split(df1, labelColumn, float(args.splitpercent), args.output)
+    else:
+        split(df1, labelColumn, float(args.splitpercent), args.output, inputLabels=list(args.data))
