@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     labelColumn = args.predictingColumn
     if args.threshold != None:
-        score(int(args.threshold), labelColumn, df1, 'isFolded')
+        score(float(args.threshold), labelColumn, df1, 'isFolded')
         print(df1.columns)
         df1 = df1.drop(labelColumn, axis=1)
         labelColumn = 'isFolded'
