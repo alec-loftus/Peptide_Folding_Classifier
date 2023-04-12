@@ -14,7 +14,7 @@ The raw datasets provided can be found in the 'data' folder. These datasets were
 
 **In order to run analysis, the following is an example of how to run a model and store its results:**
 
-usage: nohup svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &
+usage: nohup svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
 
 run SVM script
 
