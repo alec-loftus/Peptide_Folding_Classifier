@@ -14,24 +14,24 @@ The raw datasets provided can be found in the 'data' folder. These datasets were
 
 **In order to run analysis, the following is an example of how to run a model and store its results:**
 
-usage: svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX
+usage: nohup svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &
 
 run SVM script
 
-options:
-  -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
-                        input folder path for data
-  -c CROSSFOLDS, --crossfolds CROSSFOLDS
-                        number of crossfolds
-  -j JSON, --json JSON  json file with parameters for grid search cv
-  -o OUTPUT, --output OUTPUT
-                        output pickle file path
-  -r RESULTS, --results RESULTS
-                        path to results csv
-  -n NUMPROCESSORS, --numProcessors NUMPROCESSORS
-                        number of processers
-  -m MATRIX, --matrix MATRIX
-                        confusion matrix path
+- options:
+  - -i INPUT, --input INPUT
+                        input folder path for data (this is the splitData folder)
+  - -c CROSSFOLDS, --crossfolds CROSSFOLDS
+                        number of crossfolds (crossfold validation number of random splits for training across entire dataset)
+  - -j JSON, --json JSON  
+                        json file with parameters for grid search cv (these are in the params folder and depend per model as hyperparameters differ; will test all comibinations)
+  - -o OUTPUT, --output OUTPUT
+                        output pickle file path (store model object for future use and analysis)
+  - -r RESULTS, --results RESULTS
+                        path to results csv (this will store f1 score and basic model information)
+  - -n NUMPROCESSORS, --numProcessors NUMPROCESSORS
+                        number of processers (this is how many processers to use; recommend more because takes long time)
+  - -m MATRIX, --matrix MATRIX
+                        confusion matrix path (stores confusion matrix for basic evaluation)
 
 results stored in results folder and model object in models folder
