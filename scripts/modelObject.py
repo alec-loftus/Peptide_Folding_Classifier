@@ -5,7 +5,7 @@ def store(model, filepath):
         pickle.dump(model, file)
     print(f'Model stored to the following path: {filepath}')
 
-def open(filepath):
+def openIt(filepath):
     with open(filepath, 'rb') as file:
         model = pickle.load(file)
     return model
