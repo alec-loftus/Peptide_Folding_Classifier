@@ -3,7 +3,7 @@ We seek a classifier that will predict if a protein sequence (+3D coordinates) w
 
 The necessary packages are listed in the 'requirements.txt' file and can be installed together by calling that file with your installer tool. Otherwise each tool can also be installed individually/manually.
 1. First, either install locally or create a python virtual environment or conda environment
-  a. To create a python virtual environemnt in linux/unix (nice way to manage project dependencies versions without mixing with other project dependencies versions)
+  - To create a python virtual environemnt in linux/unix (nice way to manage project dependencies versions without mixing with other project dependencies versions)
     - ensure you have python3-venv, and if not install with the following command: **apt-get install python3-venv**
     - create a virtual environment: **python3 -m venv [name of environemnt]**
     - activate the viritual environment: **source venv/bin/activate**
@@ -11,8 +11,8 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 
 3. In order to run analysis, the following is an example of how to run a model and store its results:
 
-  a. usage: **nohup svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &**
-  b. options:
+  - usage: **nohup svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &**
+  - options:
     - -i INPUT, --input INPUT
                           input folder path for data (this is the splitData folder)
     - -c CROSSFOLDS, --crossfolds CROSSFOLDS
