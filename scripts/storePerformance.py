@@ -1,6 +1,6 @@
 import csv
 
-def store(name, description, metric, path, resultsPath='./results.csv'):
+def storeIt(name, description, metric, path, resultsPath):
     
     fieldnames = ['Name', 'Description', 'Metric', 'Path']
     dictionary = {'Name': name, 'Description': description, 'Metric': metric, 'Path': path}
