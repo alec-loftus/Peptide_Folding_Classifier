@@ -1,4 +1,4 @@
 {
-	"kernel": ["rbf", "linear", "poly"],
+	"kernel": ["rbf", "linear"],
 	"exponents": [-4, -2, 0, 2, 4]
 }

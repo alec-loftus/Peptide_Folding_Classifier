@@ -1,6 +1,7 @@
 from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
+import numpy as np
 
 #will be added in with data previously
 def accuracy(model, x_test,  y_test):
@@ -20,6 +21,9 @@ def confusionMat(model, x_test, y_test, storeFile):
     fig.colorbar(cax)
     plt.xlabel('Predicted')
     plt.ylabel('True')
+    
+    for (i, j), z in np.ndenumerate(arr):
+        ax.text(j, i, z, ha='center', va='center')
     
     with open(storeFile, 'w') as file:
         fig.savefig(storeFile)
