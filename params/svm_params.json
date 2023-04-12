@@ -1,4 +1,4 @@
 {
-	"kernel": ["rbf", "linear", "models"],
+	"kernel": ["rbf", "linear"],
 	"exponents": [-4, -2, 0, 2, 4]
 }
