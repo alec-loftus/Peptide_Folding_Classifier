@@ -74,5 +74,5 @@ f1 = calculate_f1_score(rf_model, x_test, y_test)
 print("F1 Score:", f1)
 
 # Generate confusion matrix and save it as an image
-confusion_matrix_file = "confusion_matrix.png"
+confusion_matrix_file = "./results/RF_confusion_matrix.png"
 plot_confusion_matrix(rf_model, x_test, y_test, confusion_matrix_file)
