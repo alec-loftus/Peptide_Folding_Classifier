@@ -23,7 +23,7 @@ def train_random_forest(X_train, y_train, X_test, y_test):
                   'max_depth': [None, 10, 20, 30],
                   'min_samples_split': [2, 5, 10],
                   'min_samples_leaf': [1, 2, 4]}
-    grid_search = GridSearchCV(rf, param_grid, cv=5, scoring='accuracy')
+    grid_search = GridSearchCV(rf, param_grid, cv=5, scoring='accuracy', n_jobs=4)
     grid_search.fit(X_train, y_train)
     y_pred = grid_search.predict(X_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
