@@ -27,10 +27,11 @@ def knn_with_gscv(x_train, y_train, x_test, y_test, n_neighbors_range=(1, 50)):
     return accuracy, gscv.best_estimator_, gscv.best_params_
 
 #Load data from CSV's
-x_train = pd.read_csv("x_train.csv")
-x_test = pd.read_csv("x_test.csv")
-y_train = pd.read_csv("y_train.csv").squeeze()
-y_test = pd.read_csv("y_test.csv").squeeze()
+
+x_train = pd.read_csv("./splitData/x_train.csv")
+x_test = pd.read_csv("./splitData/x_test.csv")
+y_train = pd.read_csv("./splitData/y_train.csv").squeeze()
+y_test = pd.read_csv("./splitData/y_test.csv").squeeze()
 
 #Train and print the accuracy
 accuracy, knn_model, best_params = knn_with_gscv(x_train, y_train, x_test, y_test)
