@@ -52,9 +52,6 @@ def confusionMat(model, x_test, y_test, storeFile):
         fig.savefig(storeFile, format='png')
         print(f'Confusion Matrix Stored at {storeFile}!')
 
-
- for (i, j), z in np.ndenumerate(arr):
-        ax.text(j, i, z, ha='center', va='center')
 # Load data from the specified CSV
 x_train = pd.read_csv("x_train.csv")
 x_test = pd.read_csv("x_test.csv")
@@ -70,4 +67,4 @@ f1_acc = f1_accuracy(dt_model, x_test, y_test)
 print("F1 Score:", f1_acc)
 
 # Generate confusion matrix and save it as an image
-confusionMat(dt_model, x_test, y_test, "confusion_matrix.png")
+confusionMat(dt_model, x_test, y_test, "./results/dt_confusion_matrix.png")
