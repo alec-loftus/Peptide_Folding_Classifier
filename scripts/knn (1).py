@@ -67,4 +67,4 @@ f1 = compute_f1_score(knn_model, x_test, y_test)
 print("F1 Score:", f1)
 
 #Save confusion matrix to a file
-confusionMat(knn_model, x_test, y_test, "confusion_matrix.png")
+confusionMat(knn_model, x_test, y_test, "./results/knn_confusion_matrix.png")
