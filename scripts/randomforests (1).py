@@ -23,7 +23,7 @@ def train_random_forest(X_train, y_train, X_test, y_test):
                   'max_depth': [None, 10, 20, 30],
                   'min_samples_split': [2, 5, 10],
                   'min_samples_leaf': [1, 2, 4]}
-    grid_search = GridSearchCV(rf, param_grid, cv=5, scoring='accuracy')
+    grid_search = GridSearchCV(rf, param_grid, cv=5, scoring='accuracy', n_jobs=4)
     grid_search.fit(X_train, y_train)
     y_pred = grid_search.predict(X_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
@@ -74,5 +74,5 @@ f1 = calculate_f1_score(rf_model, x_test, y_test)
 print("F1 Score:", f1)
 
 # Generate confusion matrix and save it as an image
-confusion_matrix_file = "confusion_matrix.png"
+confusion_matrix_file = "./results/RF_confusion_matrix.png"
 plot_confusion_matrix(rf_model, x_test, y_test, confusion_matrix_file)

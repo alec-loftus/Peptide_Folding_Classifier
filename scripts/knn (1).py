@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 def knn_with_gscv(x_train, y_train, x_test, y_test, n_neighbors_range=(1, 50)):
     knn = KNeighborsClassifier()
     param_grid = {'n_neighbors': np.arange(n_neighbors_range[0], n_neighbors_range[1])}
-    gscv = GridSearchCV(knn, param_grid, cv=5, scoring='accuracy')
+    gscv = GridSearchCV(knn, param_grid, cv=5, scoring='accuracy', n_jobs=4)
     gscv.fit(x_train, y_train)
     y_pred = gscv.predict(x_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
@@ -67,4 +67,4 @@ f1 = compute_f1_score(knn_model, x_test, y_test)
 print("F1 Score:", f1)
 
 #Save confusion matrix to a file
-confusionMat(knn_model, x_test, y_test, "confusion_matrix.png")
+confusionMat(knn_model, x_test, y_test, "./results/knn_confusion_matrix.png")

@@ -21,7 +21,7 @@ def train_decision_tree(X_train, y_train, X_test, y_test):
     param_grid = {'max_depth': [None, 10, 20, 30],
                   'min_samples_split': [2, 5, 10],
                   'min_samples_leaf': [1, 2, 4]}
-    grid_search = GridSearchCV(dt, param_grid, cv=5, scoring='accuracy')
+    grid_search = GridSearchCV(dt, param_grid, cv=5, scoring='accuracy', n_jobs=4)
     grid_search.fit(X_train, y_train)
     y_pred = grid_search.predict(X_test)
     accuracy = metrics.accuracy_score(y_test, y_pred)
@@ -52,9 +52,6 @@ def confusionMat(model, x_test, y_test, storeFile):
         fig.savefig(storeFile, format='png')
         print(f'Confusion Matrix Stored at {storeFile}!')
 
-
- for (i, j), z in np.ndenumerate(arr):
-        ax.text(j, i, z, ha='center', va='center')
 # Load data from the specified CSV
 x_train = pd.read_csv("x_train.csv")
 x_test = pd.read_csv("x_test.csv")
@@ -70,4 +67,4 @@ f1_acc = f1_accuracy(dt_model, x_test, y_test)
 print("F1 Score:", f1_acc)
 
 # Generate confusion matrix and save it as an image
-confusionMat(dt_model, x_test, y_test, "confusion_matrix.png")
+confusionMat(dt_model, x_test, y_test, "./results/dt_confusion_matrix.png")
