@@ -1,2 +1,3 @@
 Name,Description,Metric,Path
 SVM,"{'C': 100, 'gamma': 0.0001, 'kernel': 'linear'}",0.8947368421052632,models/svm.pkl
+KNN,"{'metric': 'manhattan', 'n_neighbors': 5, 'weights': 'uniform'}",0.7647058823529412,models/knn.pkl
