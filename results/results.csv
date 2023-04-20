@@ -1,5 +1,5 @@
 Name,Description,Metric,Path
-SVM,"{'C': 100, 'gamma': 0.0001, 'kernel': 'linear'}",0.8947368421052632,models/svm.pkl
-KNN,"{'metric': 'manhattan', 'n_neighbors': 5, 'weights': 'uniform'}",0.7647058823529412,models/knn.pkl
-svmBackwardSelected,"Index(['RgHist', 'positivepH'], dtype='object')",0.8947368421052632,./models/svmSelected.pkl
-svmBackwardSelected,"Index(['RgHist', 'positivepH'], dtype='object')",0.8947368421052632,./models/svmSelected.pkl
+SVM,"{'C': 1, 'gamma': 0.01, 'kernel': 'rbf'}",0.8799999999999999,models/svm.pkl
+KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'uniform'}",0.8333333333333333,models/knn.pkl
+knnBackwardSelected,"Index(['RgHist', 'RMSF', 'positivepH'], dtype='object')",0.8799999999999999,./models/knnSelected.pkl
+svmBackwardSelected,"Index(['RgHist'], dtype='object')",0.8461538461538461,./models/svmSelected.pkl
