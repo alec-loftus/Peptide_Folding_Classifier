@@ -3,3 +3,4 @@ numpy
 scikit-learn
 argparse
 matplotlib
+tensorflow
