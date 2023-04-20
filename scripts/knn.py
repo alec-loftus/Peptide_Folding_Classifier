@@ -46,14 +46,14 @@ if __name__ == '__main__':
     #assigned to g
     g = GridSearchCV(knn(), param_grid, refit = True, verbose = 3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     #fitting is done on the x and y training data
-    g.fit(x_train, y_train.isFolded)
+    g.fit(x_train, y_train)
     #best estimator argument is performed on the gridsearchCV and assigned to KNN classifier
     KNNclassifier = g.best_estimator_
     #store the KNNclasifier in the designated output folder
     store(KNNclassifier, args.output)
     #create a confusion matrix on the x_ and y_test data; store the matrix in the user designated path
-    confusionMat(KNNclassifier, x_test, y_test.isFolded, args.matrix)
+    confusionMat(KNNclassifier, x_test, y_test, args.matrix)
     #run the accuracy.py script to check accuracy of model's folding prediction
-    acc = accuracy(KNNclassifier, x_test, y_test.isFolded)
+    acc = accuracy(KNNclassifier, x_test, y_test)
     #record the model name, best parameters used, and accuracy in the results.csv file
     storeIt('KNN', f'{g.best_params_}', acc, args.output, args.results)

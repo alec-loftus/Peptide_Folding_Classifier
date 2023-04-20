@@ -50,7 +50,7 @@ if __name__ == '__main__':
     #gridsearchCV performed using the parameters, refitting, and the specified crossfolds and processors (run with default settings if not specified)
     g = GridSearchCV(svm.SVC(probability=True), param_grid, refit = True, verbose = 3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     #fits the gridsearchCV using training data
-    g.fit(x_train, y_train.isFolded)
+    g.fit(x_train, y_train)
     
     #SVMclassifier is the best estimator argument from sklearn tools
     SVMclassifier = g.best_estimator_
@@ -58,10 +58,10 @@ if __name__ == '__main__':
     #stores the estimator details as output
     store(SVMclassifier, args.output)
     
-    confusionMat(SVMclassifier, x_test, y_test.isFolded, args.matrix)
+    confusionMat(SVMclassifier, x_test, y_test, args.matrix)
     
     #runs accuracy.py script to check model performance
-    acc = accuracy(SVMclassifier, x_test, y_test.isFolded)
+    acc = accuracy(SVMclassifier, x_test, y_test)
     
     #stores the model name, best parameters, accuracy, and model name to the results csv
     storeIt('SVM', f'{g.best_params_}', acc, args.output, args.results)

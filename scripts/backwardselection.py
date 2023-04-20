@@ -38,9 +38,9 @@ if __name__ == '__main__':
     model = openIt(args.input)
 
     x_train = pd.read_csv(os.path.join(args.folder, 'x_train.csv'))
-    y_train = pd.read_csv(os.path.join(args.folder, 'y_train.csv')).isFolded
+    y_train = pd.read_csv(os.path.join(args.folder, 'y_train.csv'))
     x_test = pd.read_csv(os.path.join(args.folder, 'x_test.csv'))
-    y_test = pd.read_csv(os.path.join(args.folder, 'y_test.csv')).isFolded
+    y_test = pd.read_csv(os.path.join(args.folder, 'y_test.csv'))
 
     boolean = True
     while boolean:
