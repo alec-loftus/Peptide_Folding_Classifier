@@ -1,3 +1,4 @@
+#import required libraries
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -6,6 +7,7 @@ from glob import glob
 import os
 import pdb
 
+#set up command line argument parser
 parser = argparse.ArgumentParser(description='Split data into test/train')
 parser.add_argument('-i', '--input', help='input path to data folder', required=True)
 parser.add_argument('-o', '--output', help='output folder path for test/train csvs', required=False, default='./output')
@@ -14,6 +16,7 @@ parser.add_argument('-t', '--threshold', help='scoring threshold', required=Fals
 parser.add_argument('-d', '--data', help='list of column names of data to input', nargs='*', required=False, default=None)
 parser.add_argument('-p', '--predictingColumn', help='name of column to predict off of', required=True)
 
+#combine all input csv files into one dataframe
 def combine(files):
     dataframes = []
     finalData = []
@@ -25,9 +28,11 @@ def combine(files):
 
     return finalData
 
+#add a new column to the data frame with values based on a threshold
 def score(treshold, column, data, name):
     data[name]=np.where(data[column]<treshold,True,False)
 
+#split the data frame into training and test sets and save them as csv files
 def split(data, labelName, percent, output, inputLabels=None):
     y = data[labelName]
     x = data.drop(labelName, axis=1)
@@ -46,21 +51,24 @@ def split(data, labelName, percent, output, inputLabels=None):
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    
+   
+#find all csv files in the input folder and combine them into one dataframe
     path = os.path.join(args.input, '*.csv')
     listOFiles = glob(path)
     
     df1 = combine(listOFiles)
     
+#print the column names of the combined dataframe    
     print(df1.columns)
 
+#apply a threshold to the label column if a threshold value was provided and save the new column as 'isFolded'    
     labelColumn = args.predictingColumn
     if args.threshold != None:
         score(float(args.threshold), labelColumn, df1, 'isFolded')
         print(df1.columns)
         df1 = df1.drop(labelColumn, axis=1)
         labelColumn = 'isFolded'
-
+#split the dataframe into training and test sets and save them as csv files
     if args.data == None:
         split(df1, labelColumn, float(args.splitpercent), args.output)
     else:
