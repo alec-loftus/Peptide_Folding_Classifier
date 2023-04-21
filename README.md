@@ -15,6 +15,11 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
 ```
 
+Example test run of a model script:
+'''
+nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/svmTEST.pkl -r results/results.csv -m results/svmTESTCM.png &
+'''
+
   - options:
     - -i INPUT, --input INPUT
                           input folder path for data (this is the splitData folder)
