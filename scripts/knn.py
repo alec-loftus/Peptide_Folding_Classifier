@@ -1,5 +1,4 @@
 from sklearn.neighbors import KNeighborsClassifier as knn
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import GridSearchCV
 import numpy as np
 import pandas as pd
@@ -39,9 +38,6 @@ if __name__ == '__main__':
     y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
-    
-
-    scaler = MinMaxScaler()
 
     #script will fail if the input folder does not contain files with these names:
 
@@ -49,9 +45,6 @@ if __name__ == '__main__':
     y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
-
-    x_train = pd.DataFrame(scaler.fit_transform(x_train), columns=x_train.columns)
-    x_test = pd.DataFrame(scaler.fit_transform(x_test), columns=x_test.columns)
 
 
     #user designated json paramater file is opened as paramFile
