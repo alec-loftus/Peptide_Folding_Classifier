@@ -1,5 +1,7 @@
 Name,Description,Metric,Path
 SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}",0.7272727272727274,models/svm.pkl
 KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}",0.7500000000000001,models/knn.pkl
-svmBackwardSelected,"Index(['positivepH'], dtype='object')",0.6875,./models/svmSelected.pkl
-knnBackwardSelected,"Index(['RgStart', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7407407407407408,./models/knnSelected.pkl
+SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}",0.7826086956521738,models/svmLinear.pkl
+svmBackwardSelected,"Index(['RgHist', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelected.pkl
+knnBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/knnSelected.pkl
+svmLinearBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelectedLinear.pkl
