@@ -44,6 +44,7 @@ def split(data, labelName, percent, output, inputLabels=None):
     
     os.mkdir(output)
     
+    scaler = MinMaxScaler()
 
     x_train.to_csv(os.path.join(output, 'x_train.csv'), index=False)
     print(f'x_train.csv saved to {output}!')
