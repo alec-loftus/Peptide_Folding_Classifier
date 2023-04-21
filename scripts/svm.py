@@ -22,7 +22,7 @@ parser.add_argument('-j', '--json', help='json file with parameters for grid sea
 parser.add_argument('-o', '--output', help='output pickle file path', required=True)
 #results can be directed anywhere, but it is recommended to path to the results csv to keep a running log of all models and their accuracy
 parser.add_argument('-r', '--results', help='path to results csv', required=True)
-parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=None)
+parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=4)
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
 
 if __name__ == '__main__':
