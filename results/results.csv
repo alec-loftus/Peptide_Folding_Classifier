@@ -1,3 +1,4 @@
+Name,Description,Metric,Path
 SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}",0.7272727272727274,models/svm.pkl
 KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}",0.7500000000000001,models/knn.pkl
 svmBackwardSelected,"Index(['positivepH'], dtype='object')",0.6875,./models/svmSelected.pkl
