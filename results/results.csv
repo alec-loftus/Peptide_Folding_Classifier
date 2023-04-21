@@ -1,5 +1,7 @@
 Name,Description,Metric,Path
-SVM,"{'C': 1, 'gamma': 0.01, 'kernel': 'rbf'}",0.8799999999999999,models/svm.pkl
-KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'uniform'}",0.8333333333333333,models/knn.pkl
-knnBackwardSelected,"Index(['RgHist', 'RMSF', 'positivepH'], dtype='object')",0.8799999999999999,./models/knnSelected.pkl
-svmBackwardSelected,"Index(['RgHist'], dtype='object')",0.8461538461538461,./models/svmSelected.pkl
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}",0.7272727272727274,models/svm.pkl
+KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}",0.7500000000000001,models/knn.pkl
+SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}",0.7826086956521738,models/svmLinear.pkl
+svmBackwardSelected,"Index(['RgHist', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelected.pkl
+knnBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/knnSelected.pkl
+svmLinearBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelectedLinear.pkl

@@ -1,5 +1,6 @@
 import argparse
 from sklearn.inspection import permutation_importance
+from sklearn.preprocessing import MinMaxScaler
 from modelObject import store, openIt
 import pandas as pd
 import os
@@ -41,6 +42,12 @@ if __name__ == '__main__':
     y_train = pd.read_csv(os.path.join(args.folder, 'y_train.csv'))
     x_test = pd.read_csv(os.path.join(args.folder, 'x_test.csv'))
     y_test = pd.read_csv(os.path.join(args.folder, 'y_test.csv'))
+
+    scaler = MinMaxScaler()
+
+    x_train = pd.DataFrame(scaler.fit_transform(x_train), columns=x_train.columns)
+    x_test = pd.DataFrame(scaler.fit_transform(x_test), columns=x_test.columns)
+
 
     boolean = True
     while boolean:

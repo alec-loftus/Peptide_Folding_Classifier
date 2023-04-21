@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 import argparse
 from glob import glob
 import os
@@ -40,7 +41,14 @@ def split(data, labelName, percent, output, inputLabels=None):
     if inputLabels != None:
         x = data[inputLabels]
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=percent/float(100), random_state=42, shuffle=True)
+    
     os.mkdir(output)
+    
+    scaler = MinMaxScaler()
+    
+    x_train = pd.DataFrame(scaler.fit_transform(x_train), columns=x_train.columns)
+    x_test = pd.DataFrame(scaler.fit_transform(x_test), columns=x_test.columns)
+
     x_train.to_csv(os.path.join(output, 'x_train.csv'), index=False)
     print(f'x_train.csv saved to {output}!')
     y_train.to_csv(os.path.join(output, 'y_train.csv'), index=False)

@@ -1,0 +1,36 @@
+nohup: ignoring input
+/home/rsethi1/venv/lib/python3.10/site-packages/sklearn/neighbors/_classification.py:215: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  return self._fit(X, y)
+/home/rsethi1/venv/lib/python3.10/site-packages/sklearn/neighbors/_classification.py:215: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  return self._fit(X, y)
+/home/rsethi1/venv/lib/python3.10/site-packages/sklearn/neighbors/_classification.py:215: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
+  return self._fit(X, y)
+           names  importances
+1        RgStart    -0.023043
+3  negativeFasta     0.000000
+4  positiveFasta     0.000000
+5     negativepH     0.013241
+6     positivepH     0.013241
+2           RMSF     0.051895
+0         RgHist     0.350383
+           names  importances
+2  negativeFasta     0.000000
+3  positiveFasta     0.000000
+4     negativepH     0.012912
+5     positivepH     0.012912
+1           RMSF     0.064893
+0         RgHist     0.361255
+           names  importances
+2  positiveFasta     0.000000
+1           RMSF     0.031116
+3     negativepH     0.045323
+4     positivepH     0.045323
+0         RgHist     0.435971
+        names  importances
+2  negativepH     0.033202
+3  positivepH     0.033202
+1        RMSF     0.060145
+0      RgHist     0.417529
+Confusion Matrix Stored at ./results/knnSelectedCM.png!
+Model stored to the following path: ./models/knnSelected.pkl
+Entry stored to ./results/results.csv

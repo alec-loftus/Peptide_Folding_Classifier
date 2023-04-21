@@ -38,7 +38,15 @@ if __name__ == '__main__':
     y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
-    
+
+    #script will fail if the input folder does not contain files with these names:
+
+    x_train = pd.read_csv(os.path.join(dataPath, './x_train.csv'))
+    y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
+    x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
+    y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
+
+
     #user designated json paramater file is opened as paramFile
     with open(args.json, 'r') as paramFile:
         param_grid = json.load(paramFile)

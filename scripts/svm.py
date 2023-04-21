@@ -33,12 +33,14 @@ if __name__ == '__main__':
     dataPath = args.input
     
     #grabs the training and test data from the designated folder
+
     #script will fail if the input folder does not contain files with these names:
+
     x_train = pd.read_csv(os.path.join(dataPath, './x_train.csv'))
     y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
-    
+
     #parameter file is pulled from parameters folder for the current script (svm here)
     with open(args.json, 'r') as paramFile:
         dictionary = json.load(paramFile)
