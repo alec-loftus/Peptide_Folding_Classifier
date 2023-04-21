@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(description="train and evaluate a feed forward 
 parser.add_argument('-i', '--input', help='input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs', required=True)
 
 # output file name flag created
-parser.add_argument('-o', '--output', help='output file for model object; must be pkl', required=False, default=./output.pkl)
+parser.add_argument('-o', '--output', help='output file for model object; must be pkl', required=False, default='./output.pkl')
 
 # results.csv path flag created
 parser.add_argument('-r', '--results', help='path to results.csv (must have Name, Description, Metric, Path)', required=True)
@@ -31,15 +31,18 @@ parser.add_argument('-s', '--startinghyperparameters', help='json file with hype
 parser.add_argument('-t', '--tuninghyperparameters', help='json file with lists of hyperparameters for each option (update with types that can be played around with)', required=False, default=None)
 
 
-def create(inputSize, numHiddenLayers=1, numHiddenNodes=inputSize+4, activationHidden='relu'):
+def create(inputSize, numHiddenLayers=1, numHiddenNodes=None, activationHidden='relu'):
     '''
     Creates model layers and assorts them together
     '''
     
+    if numHiddenNodes == None:
+        numHiddenNodes = inputSize+4
+
     i = Input(shape=(inputSize,)) 
     l1 = Dense(numHiddenNodes, activation=activationHidden)(i)
     listLayers = [l1]
-    for i in numHiddenLayers-1:
+    for i in range(numHiddenLayers-1):
         l = Dense(numHiddenNodes, activation=activationHidden)(listLayers[-1])
         listLayers.append(l)
     o = Dense(1, activation='softmax')(listLayers[-1])
@@ -51,13 +54,16 @@ def create(inputSize, numHiddenLayers=1, numHiddenNodes=inputSize+4, activationH
 
     return model
 
-def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=100, batch_size=20):
+def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=1000, batch_size=40):
     '''
     Trains model on training data that is stored in the generator
     '''
     
     model.compile(optimizer=optimizer, loss=loss)
-    model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(X_test, y_test))
+    model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test))
+    predictions, y_test = evaluate(model, 0.5, x_test, y_test)
+    print(predictions)
+    print(y_test)
 
 def hyperparameterTuning():
     '''
@@ -71,7 +77,7 @@ def evaluate(model, threshold, x_test, y_test, saveFile='output.json'):
     '''
 
     predictions = model.predict(x_test)
-    predictions = np.where(predictions<threshold,1,0)
+    # predictions = np.where(predictions<threshold,1,0)
 
     return predictions, y_test
 
@@ -91,13 +97,12 @@ if __name__ == '__main__':
     y_test = pd.read_csv(os.path.join(folder, 'y_test.csv'))
 
     # number of inputs into the model stored for later use
-    inputSize = len(x_train.columns)
+    iSize = len(x_train.columns)
 
     # create a model shell
-    model = create(inputSize)
+    model = create(iSize)
     
     # train and quickly evaluate model
     train(model, x_train, y_train, x_test, y_test)
 
     # evaluate model performance 
-    evaluate(model, 0.5, x_test, y_test)
