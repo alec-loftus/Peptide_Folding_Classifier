@@ -11,7 +11,7 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 
 3. In order to run analysis, the following is an example of how to run a model and store its results:
 
-  - usage: **nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &**
+  - usage: ```nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &```
   - options:
     - -i INPUT, --input INPUT
                           input folder path for data (this is the splitData folder)
