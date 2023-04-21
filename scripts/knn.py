@@ -23,7 +23,7 @@ parser.add_argument('-o', '--output', help='output pickle file path', required=T
 #directs to a specific output file; it is recommended to direct to the results.csv file in the 'results' folder to keep all results together
 parser.add_argument('-r', '--results', help='path to results csv', required=True)
 #number of processors to use; defaults to none if no specification given
-parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=None)
+parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=4)
 #confusion matrix path direction; recommended in README.md to direct to 'results' folder
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
 
