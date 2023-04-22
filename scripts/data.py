@@ -32,7 +32,7 @@ def combine(files):
 
 #add a new column to the data frame with values based on a threshold
 def score(treshold, column, data, name):
-    data[name]=np.where(data[column]<treshold,True,False)
+    data[name]=np.where(data[column]<treshold,1,0)
 
 #split the data frame into training and test sets and save them as csv files
 def split(data, labelName, percent, output, inputLabels=None):
