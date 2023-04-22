@@ -8,6 +8,7 @@ import numpy as np
 import argparse
 from accuracy import confusionMat
 import os
+import pdb
 
 # creating command line parser for flags to run script from the command line in a customized manner
 parser = argparse.ArgumentParser(description="train and evaluate a feed forward fully connected neural network")
@@ -31,21 +32,21 @@ parser.add_argument('-s', '--startinghyperparameters', help='json file with hype
 parser.add_argument('-t', '--tuninghyperparameters', help='json file with lists of hyperparameters for each option (update with types that can be played around with)', required=False, default=None)
 
 
-def create(inputSize, numHiddenLayers=1, numHiddenNodes=None, activationHidden='relu'):
+def create(inputSize, numHiddenLayers=2, numHiddenNodes=None, activationHidden='relu'):
     '''
     Creates model layers and assorts them together
     '''
     
     if numHiddenNodes == None:
-        numHiddenNodes = inputSize+4
+        numHiddenNodes = inputSize+2
 
-    i = Input(shape=(inputSize,)) 
-    l1 = Dense(numHiddenNodes, activation=activationHidden)(i)
-    listLayers = [l1]
-    for i in range(numHiddenLayers-1):
+    i = Input(shape=(inputSize,))
+    listLayers = []
+    listLayers.append(i)
+    for index in range(numHiddenLayers):
         l = Dense(numHiddenNodes, activation=activationHidden)(listLayers[-1])
         listLayers.append(l)
-    o = Dense(1, activation='softmax')(listLayers[-1])
+    o = Dense(1, activation='sigmoid')(listLayers[-1])
     
     model = Model(inputs=i, outputs=o)
 
@@ -54,7 +55,7 @@ def create(inputSize, numHiddenLayers=1, numHiddenNodes=None, activationHidden='
 
     return model
 
-def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=1000, batch_size=40):
+def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=100, batch_size=40):
     '''
     Trains model on training data that is stored in the generator
     '''
