@@ -1,6 +1,8 @@
 # Import necessary libraries
 from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import roc_curve
+from sklearn.metrics import auc
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -10,10 +12,14 @@ def accuracy(model, x_test,  y_test):
     y_pred = model.predict(x_test)
     # Calculate the f1 score of the predictions with respect to the true test labels
     return f1_score(y_test, y_pred)
+
 # Define a function to create and store a confusion matrix of a model's predictions
-def confusionMat(model, x_test, y_test, storeFile):
+def confusionMat(model, x_test, y_test, storeFile, threshold=0.5):
     # Make predictions on the test features using the model
     y_pred = model.predict(x_test)
+    # convert prediction probabilities to integers
+    y_pred = np.where(y_pred<threshold,1,0)
+    print(y_pred)
     # Calculate the confusion matrix of the predictions with respect to the true test labels
     arr = confusion_matrix(y_test, y_pred)
     # Create a figure and axis object
@@ -37,3 +43,23 @@ def confusionMat(model, x_test, y_test, storeFile):
         fig.savefig(storeFile)
         # Print a message indicating the location of the saved file
         print(f'Confusion Matrix Stored at {storeFile}!')
+
+# plot roc_curve
+def roc(model, x_test, y_test, storeFile):
+    predictions = model.predict(x_test).ravel() # makes preductuibs into one array continuous rather than multiple
+    fpr, tpr, thresholds = roc_curve(y_test, predictions) # fpr, tpr and thresholds for roc curve
+    area = auc(fpr, tpr)
+    threshold = np.sqrt(tpr * (1 - fpr))
+    
+    # plot and save ROC curve
+    fig = plt.figure
+    plt.plot([0, 1], [0, 1], 'k--') # plots random guess line
+    plt.plot(fpr, tpr, label=f'AUC = {area}')
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC Curve')
+    plt.legend(loc='best')
+    plt.savefig(storeFile)
+    print(f'ROC curve saved to {storeFile}')
+    return area, threshold
+

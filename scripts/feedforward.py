@@ -3,10 +3,13 @@ from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.metrics import AUC
 import pandas as pd
 import numpy as np
 import argparse
-from accuracy import confusionMat
+from accuracy import confusionMat, roc
+from storePerformance import storeIt
+from modelObject import store
 import os
 import pdb
 
@@ -23,7 +26,7 @@ parser.add_argument('-o', '--output', help='output file for model object; must b
 parser.add_argument('-r', '--results', help='path to results.csv (must have Name, Description, Metric, Path)', required=True)
 
 # matrix path flag created
-parser.add_argument('-m', '--matrix', help='path to matrix file; must be png', required=False, default='./output.png')
+parser.add_argument('-m', '--matrix', help='path to matrix file; must be png', required=False, default='./outputCM.png')
 
 # customized 1 set of hyperparameters
 parser.add_argument('-s', '--startinghyperparameters', help='json file with hyperparameters for customized model training (update with types that can be played around with)', required=False, default=None)
@@ -31,6 +34,8 @@ parser.add_argument('-s', '--startinghyperparameters', help='json file with hype
 # list of options of hyperparameters for tuning
 parser.add_argument('-t', '--tuninghyperparameters', help='json file with lists of hyperparameters for each option (update with types that can be played around with)', required=False, default=None)
 
+# options for roc file storage
+parser.add_argument('-c', '--curve', help='file path to store ROC curve', required=False, default='./outputROC.png')
 
 def create(inputSize, numHiddenLayers=2, numHiddenNodes=None, activationHidden='relu'):
     '''
@@ -62,9 +67,7 @@ def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse',
     
     model.compile(optimizer=optimizer, loss=loss)
     model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test))
-    predictions, y_test = evaluate(model, 0.5, x_test, y_test)
-    print(predictions)
-    print(y_test)
+    
 
 def hyperparameterTuning():
     '''
@@ -72,15 +75,20 @@ def hyperparameterTuning():
     '''
     return
 
-def evaluate(model, threshold, x_test, y_test, saveFile='output.json'):
+def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile):
     '''
     Evaluates trained model on test data set and stores results
     '''
+    print(y_test)
+    print(model.predict(x_test).ravel())
 
-    predictions = model.predict(x_test)
-    # predictions = np.where(predictions<threshold,1,0)
+    area, threshold = roc(model, x_test, y_test, rocfile)
 
-    return predictions, y_test
+    confusionMat(model, x_test, y_test, cmfile, threshold)
+    
+    store(model, storepath)
+
+    storeIt('DLModel', 'simple feed forward model', {'f1score': accuracy(model, x_test, y_test), 'AUC': area}, storepath, resultsFile)
 
 
 if __name__ == '__main__':
@@ -106,4 +114,5 @@ if __name__ == '__main__':
     # train and quickly evaluate model
     train(model, x_train, y_train, x_test, y_test)
 
-    # evaluate model performance 
+    # evaluate model performance
+    evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve)
