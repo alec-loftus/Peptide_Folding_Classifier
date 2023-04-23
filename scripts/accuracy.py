@@ -58,6 +58,7 @@ def roc(model, x_test, y_test, storeFile):
     try:
         y_pred = list(model.predict_proba(x_test))
         y_pred = np.array([y[1] for y in y_pred])
+        print(y_pred)
     except:
         y_pred = list(model.predict(x_test).ravel())
     fpr, tpr, thresholds = roc_curve(y_test, y_pred) # fpr, tpr and thresholds for roc curve

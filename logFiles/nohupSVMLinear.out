@@ -42,26 +42,36 @@ Fitting 5 folds for each of 4 candidates, totalling 20 fits
 /home/rsethi1/venv/lib/python3.10/site-packages/sklearn/utils/validation.py:1143: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
   y = column_or_1d(y, warn=True)
 Model stored to the following path: models/svmLinear.pkl
+[9.73529111e-01 1.00000010e-07 3.39281655e-03 1.00000010e-07
+ 8.29941489e-05 1.32584012e-02 4.38747662e-02 2.91895957e-02
+ 5.82283416e-01 8.81935581e-02 8.74183060e-01 4.74547782e-01
+ 4.66019964e-01 2.64449428e-02 6.30957358e-04 8.88053947e-01
+ 1.00000010e-07 8.74435032e-01 6.04854112e-02 2.45510809e-01
+ 1.00000010e-07 4.17247003e-04 3.04950912e-06 6.75668911e-07
+ 9.37808210e-01 4.40981319e-01 4.03217488e-03 1.00000010e-07
+ 1.00000010e-07 1.00000010e-07 3.14976011e-03 5.33475332e-05
+ 1.00000010e-07 9.75512087e-01 6.96633202e-01 2.19702811e-02
+ 3.73045959e-07 3.71049923e-06 4.04074668e-03 1.04608437e-03]
 ROC curve saved to ./results/rocs/svmROCLinear.png
 Confusion Matrix Stored at results/cms/svmCMLinear.png!
 Entry stored to results/results.csv
-[CV 1/5] END ...C=100, gamma=100, kernel=linear;, score=0.812 total time=   0.0s
+[CV 4/5] END ...C=100, gamma=100, kernel=linear;, score=0.968 total time=   0.0s
+[CV 3/5] END .C=100, gamma=10000, kernel=linear;, score=0.844 total time=   0.0s
+[CV 1/5] END .C=10000, gamma=100, kernel=linear;, score=0.812 total time=   0.1s
 [CV 4/5] END .C=10000, gamma=100, kernel=linear;, score=0.935 total time=   0.1s
-[CV 1/5] END C=10000, gamma=10000, kernel=linear;, score=0.812 total time=   0.1s
-[CV 2/5] END ...C=100, gamma=100, kernel=linear;, score=0.875 total time=   0.0s
+[CV 2/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
+[CV 1/5] END ...C=100, gamma=100, kernel=linear;, score=0.812 total time=   0.0s
 [CV 5/5] END ...C=100, gamma=100, kernel=linear;, score=0.871 total time=   0.0s
 [CV 1/5] END .C=100, gamma=10000, kernel=linear;, score=0.812 total time=   0.0s
 [CV 2/5] END .C=100, gamma=10000, kernel=linear;, score=0.875 total time=   0.0s
 [CV 4/5] END .C=100, gamma=10000, kernel=linear;, score=0.968 total time=   0.0s
-[CV 1/5] END .C=10000, gamma=100, kernel=linear;, score=0.812 total time=   0.1s
-[CV 5/5] END .C=10000, gamma=100, kernel=linear;, score=0.871 total time=   0.1s
-[CV 4/5] END C=10000, gamma=10000, kernel=linear;, score=0.935 total time=   0.1s
+[CV 2/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.1s
+[CV 1/5] END C=10000, gamma=10000, kernel=linear;, score=0.812 total time=   0.1s
+[CV 5/5] END C=10000, gamma=10000, kernel=linear;, score=0.871 total time=   0.1s
 [CV 3/5] END ...C=100, gamma=100, kernel=linear;, score=0.844 total time=   0.0s
+[CV 5/5] END .C=100, gamma=10000, kernel=linear;, score=0.871 total time=   0.0s
 [CV 3/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.1s
 [CV 3/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
-[CV 4/5] END ...C=100, gamma=100, kernel=linear;, score=0.968 total time=   0.0s
-[CV 3/5] END .C=100, gamma=10000, kernel=linear;, score=0.844 total time=   0.0s
-[CV 5/5] END .C=100, gamma=10000, kernel=linear;, score=0.871 total time=   0.0s
-[CV 2/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.1s
-[CV 2/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
-[CV 5/5] END C=10000, gamma=10000, kernel=linear;, score=0.871 total time=   0.1s
+[CV 2/5] END ...C=100, gamma=100, kernel=linear;, score=0.875 total time=   0.0s
+[CV 5/5] END .C=10000, gamma=100, kernel=linear;, score=0.871 total time=   0.1s
+[CV 4/5] END C=10000, gamma=10000, kernel=linear;, score=0.935 total time=   0.1s
