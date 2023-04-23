@@ -61,7 +61,7 @@ if __name__ == '__main__':
     #store the KNNclasifier in the designated output folder
     store(KNNclassifier, args.output)
     # calculate AUC and highest threshold
-    area, threshold = roc(model, x_test, y_test, rocfile)
+    area, threshold = roc(KNNclassifier, x_test, y_test, args.curve)
     #create a confusion matrix on the x_ and y_test data; store the matrix in the user designated path
     confusionMat(KNNclassifier, x_test, y_test, args.matrix, threshold)
     #run the accuracy.py script to check accuracy of model's folding prediction
