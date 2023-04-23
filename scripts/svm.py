@@ -63,10 +63,10 @@ if __name__ == '__main__':
     
 
     # calculate AUC and highest threshold
-    area, threshold = roc(model, x_test, y_test, args.curve)
+    area, threshold = roc(SVMclassifier, x_test, y_test, args.curve)
     #create a confusion matrix on the x_ and y_test data; store the matrix in the user designated path
     confusionMat(SVMclassifier, x_test, y_test, args.matrix, threshold)
     #run the accuracy.py script to check accuracy of model's folding prediction
-    acc = accuracy(SVMclassifier, x_test, y_test, threshold)
+    f1, acc = accuracy(SVMclassifier, x_test, y_test, threshold)
     #record the model name, best parameters used, and accuracy in the results.csv file
-    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': acc}, args.output, args.results)
+    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results)

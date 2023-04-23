@@ -1,9 +1,5 @@
 Name,Description,Metric,Path
-SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}",0.7272727272727274,models/svm.pkl
-KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}",0.7500000000000001,models/knn.pkl
-SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}",0.7826086956521738,models/svmLinear.pkl
-svmBackwardSelected,"Index(['RgHist', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelected.pkl
-knnBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/knnSelected.pkl
-svmLinearBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelectedLinear.pkl
-DLModel,simple feed forward model,"{'f1score': 0.7199999999999999, 'AUC': 0.886039886039886}",./models/DL.pkl
-DLModel,simple feed forward model,"{'f1score': 0.888888888888889, 'AUC': 0.9401709401709402}",./models/DL.pkl
+KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}","{'AUC': 0.8091168091168092, 'f1score': 0.7500000000000001, 'regularAccuracy': 0.85}",models/knn.pkl
+SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}","{'AUC': 0.8276353276353277, 'f1score': 0.7826086956521738, 'regularAccuracy': 0.875}",models/svmLinear.pkl
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.7891737891737892, 'f1score': 0.7272727272727274, 'regularAccuracy': 0.85}",models/svm.pkl
+DLModel,simple feed forward model,"{'f1score': 0.8461538461538461, 'regularAccuracy': 0.9, 'AUC': 0.9373219373219374}",./models/DL.pkl

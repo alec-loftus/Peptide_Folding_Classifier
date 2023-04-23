@@ -86,7 +86,9 @@ def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile):
     
     store(model, storepath)
 
-    storeIt('DLModel', 'simple feed forward model', {'f1score': accuracy(model, x_test, y_test, threshold), 'AUC': area}, storepath, resultsFile)
+    f1, acc = accuracy(model, x_test, y_test, threshold)
+
+    storeIt('DLModel', 'simple feed forward model', {'f1score': f1, 'regularAccuracy': acc, 'AUC': area}, storepath, resultsFile)
 
 
 if __name__ == '__main__':

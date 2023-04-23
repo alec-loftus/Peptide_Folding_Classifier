@@ -1,5 +1,5 @@
 # Import necessary libraries
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
@@ -13,7 +13,7 @@ def accuracy(model, x_test,  y_test, threshold=0.5):
     # convert prediction probabilities to integers
     y_pred = [1 if float(y)>=threshold else 0 for y in y_pred]
     # Calculate the f1 score of the predictions with respect to the true test labels
-    return f1_score(y_test, y_pred)
+    return f1_score(y_test, y_pred), accuracy_score(y_test, y_pred)
 
 # Define a function to create and store a confusion matrix of a model's predictions
 def confusionMat(model, x_test, y_test, storeFile, threshold=0.5):
