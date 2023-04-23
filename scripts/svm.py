@@ -9,6 +9,7 @@ from modelObject import store
 from storePerformance import storeIt
 from accuracy import accuracy
 from accuracy import confusionMat, roc
+from backwardselection import importances
 
 #argparser allows for command line inputs to specify parameters and data paths
 parser = argparse.ArgumentParser(description='run SVM script')
@@ -68,5 +69,7 @@ if __name__ == '__main__':
     confusionMat(SVMclassifier, x_test, y_test, args.matrix, threshold)
     #run the accuracy.py script to check accuracy of model's folding prediction
     f1, acc = accuracy(SVMclassifier, x_test, y_test, threshold)
+    # record importances
+    varaibleImportances = importances(SVMclassifier, x_test, y_test).to_dict()
     #record the model name, best parameters used, and accuracy in the results.csv file
-    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results)
+    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, varaibleImportances)
