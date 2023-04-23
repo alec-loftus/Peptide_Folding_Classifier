@@ -24,7 +24,7 @@ parser.add_argument('-o', '--output', help='output pickle file path', required=T
 parser.add_argument('-r', '--results', help='path to results csv', required=True)
 parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=4)
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
-parser.add_argument('c', '--curve', help='path for roc curve', required=False, default='outputROC.png')
+parser.add_argument('-a', '--curve', help='path for roc curve', required=False, default='outputROC.png')
 
 if __name__ == '__main__':
 
@@ -63,10 +63,10 @@ if __name__ == '__main__':
     
 
     # calculate AUC and highest threshold
-    area, threshold = roc(model, x_test, y_test, rocfile)
+    area, threshold = roc(model, x_test, y_test, args.curve)
     #create a confusion matrix on the x_ and y_test data; store the matrix in the user designated path
-    confusionMat(KNNclassifier, x_test, y_test, args.matrix, threshold)
+    confusionMat(SVMclassifier, x_test, y_test, args.matrix, threshold)
     #run the accuracy.py script to check accuracy of model's folding prediction
-    acc = accuracy(KNNclassifier, x_test, y_test, threshold)
+    acc = accuracy(SVMclassifier, x_test, y_test, threshold)
     #record the model name, best parameters used, and accuracy in the results.csv file
     storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': acc}, args.output, args.results)
