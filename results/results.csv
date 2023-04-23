@@ -1,7 +1,4 @@
-Name,Description,Metric,Path
-SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}",0.7272727272727274,models/svm.pkl
-KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}",0.7500000000000001,models/knn.pkl
-SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}",0.7826086956521738,models/svmLinear.pkl
-svmBackwardSelected,"Index(['RgHist', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelected.pkl
-knnBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/knnSelected.pkl
-svmLinearBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelectedLinear.pkl
+Name,Description,Metric,Path,Importances
+KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}","{'AUC': 0.9316239316239315, 'f1score': 0.8125000000000001, 'regularAccuracy': 0.85}",./models/knn.pkl,"{'names': {1: 'RgStart', 3: 'negativeFasta', 4: 'positiveFasta', 5: 'negativepH', 6: 'positivepH', 2: 'RMSF', 0: 'RgHist'}, 'importances': {1: -0.02608695652173898, 3: 0.0, 4: 0.0, 5: 0.01798418972332021, 6: 0.01798418972332021, 2: 0.04802371541501982, 0: 0.28933014354067}}"
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.9373219373219374, 'f1score': 0.8461538461538461, 'regularAccuracy': 0.9}",./models/svm.pkl,"{'names': {2: 'RMSF', 1: 'RgStart', 3: 'negativeFasta', 4: 'positiveFasta', 5: 'negativepH', 6: 'positivepH', 0: 'RgHist'}, 'importances': {2: -0.043346508563899745, 1: -0.03320158102766786, 3: 0.0, 4: 0.0, 5: 0.024242424242424267, 6: 0.024242424242424267, 0: 0.5104347826086958}}"
+DLModel,simple feed forward model,"{'f1score': 0.8799999999999999, 'regularAccuracy': 0.925, 'AUC': 0.9515669515669516}",./models/DL.pkl,

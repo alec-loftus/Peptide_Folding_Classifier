@@ -1,4 +1,3 @@
-nohup: ignoring input
 Fitting 5 folds for each of 16 candidates, totalling 80 fits
 /home/rsethi1/venv/lib/python3.10/site-packages/sklearn/neighbors/_classification.py:215: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
   return self._fit(X, y)
@@ -162,86 +161,87 @@ Fitting 5 folds for each of 16 candidates, totalling 80 fits
   return self._fit(X, y)
 /home/rsethi1/venv/lib/python3.10/site-packages/sklearn/neighbors/_classification.py:215: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples,), for example using ravel().
   return self._fit(X, y)
-Model stored to the following path: models/knn.pkl
-Confusion Matrix Stored at results/knnCM.png!
-Entry stored to results/results.csv
-[CV 3/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.688 total time=   0.0s
+Model stored to the following path: ./models/knn.pkl
+ROC curve saved to ./results/rocs/knnROC.png
+Confusion Matrix Stored at ./results/cms/knnCM.png!
+Entry stored to ./results/results.csv
+[CV 4/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.839 total time=   0.0s
+[CV 5/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.806 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.688 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.812 total time=   0.0s
+[CV 4/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.968 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.812 total time=   0.0s
 [CV 5/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.903 total time=   0.0s
 [CV 4/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.935 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.719 total time=   0.0s
-[CV 4/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.935 total time=   0.0s
-[CV 4/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.968 total time=   0.0s
-[CV 5/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.871 total time=   0.0s
+[CV 5/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.871 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.719 total time=   0.0s
 [CV 5/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.839 total time=   0.0s
 [CV 1/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.844 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.903 total time=   0.0s
-[CV 5/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.839 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.968 total time=   0.0s
-[CV 5/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.871 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.906 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.750 total time=   0.0s
 [CV 1/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.875 total time=   0.0s
 [CV 2/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.812 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.719 total time=   0.0s
-[CV 5/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.871 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.719 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.935 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.875 total time=   0.0s
 [CV 3/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.750 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.688 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.719 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.844 total time=   0.0s
+[CV 4/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.935 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.875 total time=   0.0s
+[CV 5/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.871 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.719 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.844 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.844 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.781 total time=   0.0s
+[CV 4/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.968 total time=   0.0s
+[CV 5/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.871 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.903 total time=   0.0s
+[CV 5/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.839 total time=   0.0s
+[CV 1/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.875 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.875 total time=   0.0s
+[CV 5/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.903 total time=   0.0s
+[CV 1/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.844 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.875 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.719 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.968 total time=   0.0s
 [CV 1/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.844 total time=   0.0s
-[CV 4/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.839 total time=   0.0s
 [CV 5/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.806 total time=   0.0s
 [CV 1/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.812 total time=   0.0s
 [CV 2/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.906 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.719 total time=   0.0s
 [CV 4/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.839 total time=   0.0s
-[CV 5/5] END metric=euclidean, n_neighbors=3, weights=distance;, score=0.806 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.844 total time=   0.0s
 [CV 2/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.875 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.688 total time=   0.0s
-[CV 4/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.935 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.812 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.875 total time=   0.0s
-[CV 4/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.968 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.875 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.719 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.844 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.750 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.844 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.781 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s
-[CV 3/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.719 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.750 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.903 total time=   0.0s
-[CV 1/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.875 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.875 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.688 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.968 total time=   0.0s
-[CV 1/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.844 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.812 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.968 total time=   0.0s
-[CV 1/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s
-[CV 4/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.968 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.875 total time=   0.0s
 [CV 5/5] END metric=euclidean, n_neighbors=5, weights=uniform;, score=0.871 total time=   0.0s
 [CV 3/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.688 total time=   0.0s
-[CV 5/5] END metric=euclidean, n_neighbors=5, weights=distance;, score=0.871 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.812 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.875 total time=   0.0s
 [CV 4/5] END metric=euclidean, n_neighbors=11, weights=uniform;, score=0.935 total time=   0.0s
-[CV 2/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.875 total time=   0.0s
-[CV 5/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.871 total time=   0.0s
-[CV 5/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.839 total time=   0.0s
-[CV 1/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.750 total time=   0.0s
+[CV 3/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.719 total time=   0.0s
+[CV 4/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.935 total time=   0.0s
 [CV 1/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.875 total time=   0.0s
 [CV 2/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.875 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.906 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=3, weights=distance;, score=0.750 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.688 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.968 total time=   0.0s
 [CV 5/5] END metric=manhattan, n_neighbors=5, weights=uniform;, score=0.871 total time=   0.0s
 [CV 1/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.844 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.875 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.688 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.875 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.719 total time=   0.0s
 [CV 4/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.968 total time=   0.0s
 [CV 5/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.903 total time=   0.0s
-[CV 2/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.875 total time=   0.0s
+[CV 1/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.844 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.812 total time=   0.0s
 [CV 5/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.871 total time=   0.0s
-[CV 3/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.719 total time=   0.1s
-[CV 4/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.935 total time=   0.0s
-[CV 5/5] END metric=manhattan, n_neighbors=11, weights=uniform;, score=0.903 total time=   0.0s
-[CV 1/5] END metric=manhattan, n_neighbors=11, weights=distance;, score=0.844 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=3, weights=uniform;, score=0.875 total time=   0.0s
+[CV 2/5] END metric=euclidean, n_neighbors=11, weights=distance;, score=0.875 total time=   0.0s
+[CV 5/5] END metric=euclidean, n_neighbors=19, weights=uniform;, score=0.839 total time=   0.0s
+[CV 1/5] END metric=euclidean, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.750 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=3, weights=uniform;, score=0.903 total time=   0.0s
+[CV 2/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.875 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.688 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.968 total time=   0.0s
+[CV 5/5] END metric=manhattan, n_neighbors=5, weights=distance;, score=0.871 total time=   0.0s
+[CV 3/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.719 total time=   0.0s
+[CV 4/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.968 total time=   0.0s
+[CV 5/5] END metric=manhattan, n_neighbors=19, weights=uniform;, score=0.871 total time=   0.0s
+[CV 1/5] END metric=manhattan, n_neighbors=19, weights=distance;, score=0.812 total time=   0.0s

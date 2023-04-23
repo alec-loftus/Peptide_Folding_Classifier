@@ -3,11 +3,15 @@ from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.metrics import AUC
 import pandas as pd
 import numpy as np
 import argparse
-from accuracy import confusionMat
+from accuracy import confusionMat, roc, accuracy
+from storePerformance import storeIt
+from modelObject import store
 import os
+import pdb
 
 # creating command line parser for flags to run script from the command line in a customized manner
 parser = argparse.ArgumentParser(description="train and evaluate a feed forward fully connected neural network")
@@ -22,7 +26,7 @@ parser.add_argument('-o', '--output', help='output file for model object; must b
 parser.add_argument('-r', '--results', help='path to results.csv (must have Name, Description, Metric, Path)', required=True)
 
 # matrix path flag created
-parser.add_argument('-m', '--matrix', help='path to matrix file; must be png', required=False, default='./output.png')
+parser.add_argument('-m', '--matrix', help='path to matrix file; must be png', required=False, default='./outputCM.png')
 
 # customized 1 set of hyperparameters
 parser.add_argument('-s', '--startinghyperparameters', help='json file with hyperparameters for customized model training (update with types that can be played around with)', required=False, default=None)
@@ -30,22 +34,24 @@ parser.add_argument('-s', '--startinghyperparameters', help='json file with hype
 # list of options of hyperparameters for tuning
 parser.add_argument('-t', '--tuninghyperparameters', help='json file with lists of hyperparameters for each option (update with types that can be played around with)', required=False, default=None)
 
+# options for roc file storage
+parser.add_argument('-c', '--curve', help='file path to store ROC curve', required=False, default='./outputROC.png')
 
-def create(inputSize, numHiddenLayers=1, numHiddenNodes=None, activationHidden='relu'):
+def create(inputSize, numHiddenLayers=2, numHiddenNodes=None, activationHidden='relu'):
     '''
     Creates model layers and assorts them together
     '''
     
     if numHiddenNodes == None:
-        numHiddenNodes = inputSize+4
+        numHiddenNodes = inputSize+2
 
-    i = Input(shape=(inputSize,)) 
-    l1 = Dense(numHiddenNodes, activation=activationHidden)(i)
-    listLayers = [l1]
-    for i in range(numHiddenLayers-1):
+    i = Input(shape=(inputSize,))
+    listLayers = []
+    listLayers.append(i)
+    for index in range(numHiddenLayers):
         l = Dense(numHiddenNodes, activation=activationHidden)(listLayers[-1])
         listLayers.append(l)
-    o = Dense(1, activation='softmax')(listLayers[-1])
+    o = Dense(1, activation='sigmoid')(listLayers[-1])
     
     model = Model(inputs=i, outputs=o)
 
@@ -54,16 +60,14 @@ def create(inputSize, numHiddenLayers=1, numHiddenNodes=None, activationHidden='
 
     return model
 
-def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=1000, batch_size=40):
+def train(model, x_train, y_train, x_test, y_test, optimizer='adam', loss='mse', epochs=1000, batch_size=20):
     '''
     Trains model on training data that is stored in the generator
     '''
     
     model.compile(optimizer=optimizer, loss=loss)
     model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test))
-    predictions, y_test = evaluate(model, 0.5, x_test, y_test)
-    print(predictions)
-    print(y_test)
+    
 
 def hyperparameterTuning():
     '''
@@ -71,15 +75,20 @@ def hyperparameterTuning():
     '''
     return
 
-def evaluate(model, threshold, x_test, y_test, saveFile='output.json'):
+def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile):
     '''
     Evaluates trained model on test data set and stores results
     '''
 
-    predictions = model.predict(x_test)
-    # predictions = np.where(predictions<threshold,1,0)
+    area, threshold = roc(model, x_test, y_test, rocfile)
 
-    return predictions, y_test
+    confusionMat(model, x_test, y_test, cmfile, threshold)
+    
+    store(model, storepath)
+
+    f1, acc = accuracy(model, x_test, y_test, threshold)
+
+    storeIt('DLModel', 'simple feed forward model', {'f1score': f1, 'regularAccuracy': acc, 'AUC': area}, storepath, resultsFile)
 
 
 if __name__ == '__main__':
@@ -105,4 +114,5 @@ if __name__ == '__main__':
     # train and quickly evaluate model
     train(model, x_train, y_train, x_test, y_test)
 
-    # evaluate model performance 
+    # evaluate model performance
+    evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve)
