@@ -7,3 +7,5 @@ SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}","{'AUC': 0.9373219373219375, 
 KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}","{'AUC': 0.9316239316239316, 'f1score': 0.8125000000000001, 'regularAccuracy': 0.85}",models/knn.pkl
 SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.9373219373219375, 'f1score': 0.8461538461538461, 'regularAccuracy': 0.9}",models/svm.pkl
 DLModel,simple feed forward model,"{'f1score': 0.8461538461538461, 'regularAccuracy': 0.9, 'AUC': 0.9287749287749287}",./models/DL.pkl
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.9373219373219375, 'f1score': 0.888888888888889, 'regularAccuracy': 0.925}",./models/test.pkl
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.9373219373219374, 'f1score': 0.888888888888889, 'regularAccuracy': 0.925}",./models/test.pkl
