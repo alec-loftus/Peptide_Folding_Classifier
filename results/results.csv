@@ -1,5 +1,5 @@
 Name,Description,Metric,Path
-KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}","{'AUC': 0.8091168091168092, 'f1score': 0.7500000000000001, 'regularAccuracy': 0.85}",models/knn.pkl
-SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}","{'AUC': 0.8276353276353277, 'f1score': 0.7826086956521738, 'regularAccuracy': 0.875}",models/svmLinear.pkl
-SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.7891737891737892, 'f1score': 0.7272727272727274, 'regularAccuracy': 0.85}",models/svm.pkl
-DLModel,simple feed forward model,"{'f1score': 0.8461538461538461, 'regularAccuracy': 0.9, 'AUC': 0.9373219373219374}",./models/DL.pkl
+SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}","{'AUC': 0.9373219373219375, 'f1score': 0.8461538461538461, 'regularAccuracy': 0.9}",models/svmLinear.pkl
+KNN,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}","{'AUC': 0.9316239316239316, 'f1score': 0.8125000000000001, 'regularAccuracy': 0.85}",models/knn.pkl
+SVM,"{'C': 10000, 'gamma': 0.01, 'kernel': 'rbf'}","{'AUC': 0.9373219373219375, 'f1score': 0.888888888888889, 'regularAccuracy': 0.925}",models/svm.pkl
+DLModel,simple feed forward model,"{'f1score': 0.8461538461538461, 'regularAccuracy': 0.9, 'AUC': 0.9287749287749287}",./models/DL.pkl

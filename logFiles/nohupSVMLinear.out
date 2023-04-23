@@ -45,23 +45,23 @@ Model stored to the following path: models/svmLinear.pkl
 ROC curve saved to ./results/rocs/svmROCLinear.png
 Confusion Matrix Stored at results/cms/svmCMLinear.png!
 Entry stored to results/results.csv
-[CV 2/5] END ...C=100, gamma=100, kernel=linear;, score=0.875 total time=   0.0s
-[CV 4/5] END .C=10000, gamma=100, kernel=linear;, score=0.935 total time=   0.1s
-[CV 2/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
-[CV 3/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
 [CV 1/5] END ...C=100, gamma=100, kernel=linear;, score=0.812 total time=   0.0s
+[CV 4/5] END .C=10000, gamma=100, kernel=linear;, score=0.935 total time=   0.1s
+[CV 1/5] END C=10000, gamma=10000, kernel=linear;, score=0.812 total time=   0.1s
+[CV 2/5] END ...C=100, gamma=100, kernel=linear;, score=0.875 total time=   0.0s
 [CV 5/5] END ...C=100, gamma=100, kernel=linear;, score=0.871 total time=   0.0s
 [CV 1/5] END .C=100, gamma=10000, kernel=linear;, score=0.812 total time=   0.0s
 [CV 2/5] END .C=100, gamma=10000, kernel=linear;, score=0.875 total time=   0.0s
-[CV 3/5] END .C=100, gamma=10000, kernel=linear;, score=0.844 total time=   0.0s
 [CV 4/5] END .C=100, gamma=10000, kernel=linear;, score=0.968 total time=   0.0s
-[CV 5/5] END .C=100, gamma=10000, kernel=linear;, score=0.871 total time=   0.0s
 [CV 1/5] END .C=10000, gamma=100, kernel=linear;, score=0.812 total time=   0.1s
-[CV 1/5] END C=10000, gamma=10000, kernel=linear;, score=0.812 total time=   0.1s
+[CV 5/5] END .C=10000, gamma=100, kernel=linear;, score=0.871 total time=   0.1s
 [CV 4/5] END C=10000, gamma=10000, kernel=linear;, score=0.935 total time=   0.1s
 [CV 3/5] END ...C=100, gamma=100, kernel=linear;, score=0.844 total time=   0.0s
-[CV 3/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.2s
-[CV 5/5] END C=10000, gamma=10000, kernel=linear;, score=0.871 total time=   0.1s
+[CV 3/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.1s
+[CV 3/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
 [CV 4/5] END ...C=100, gamma=100, kernel=linear;, score=0.968 total time=   0.0s
-[CV 2/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.0s
-[CV 5/5] END .C=10000, gamma=100, kernel=linear;, score=0.871 total time=   0.3s
+[CV 3/5] END .C=100, gamma=10000, kernel=linear;, score=0.844 total time=   0.0s
+[CV 5/5] END .C=100, gamma=10000, kernel=linear;, score=0.871 total time=   0.0s
+[CV 2/5] END .C=10000, gamma=100, kernel=linear;, score=0.875 total time=   0.1s
+[CV 2/5] END C=10000, gamma=10000, kernel=linear;, score=0.875 total time=   0.1s
+[CV 5/5] END C=10000, gamma=10000, kernel=linear;, score=0.871 total time=   0.1s
