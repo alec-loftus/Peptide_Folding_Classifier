@@ -5,3 +5,5 @@ SVM,"{'C': 100, 'gamma': 100, 'kernel': 'linear'}",0.7826086956521738,models/svm
 svmBackwardSelected,"Index(['RgHist', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelected.pkl
 knnBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/knnSelected.pkl
 svmLinearBackwardSelected,"Index(['RgHist', 'RMSF', 'negativepH', 'positivepH'], dtype='object')",0.7826086956521738,./models/svmSelectedLinear.pkl
+DLModel,simple feed forward model,"{'f1score': 0.7199999999999999, 'AUC': 0.886039886039886}",./models/DL.pkl
+DLModel,simple feed forward model,"{'f1score': 0.888888888888889, 'AUC': 0.9401709401709402}",./models/DL.pkl
