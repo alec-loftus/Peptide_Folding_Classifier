@@ -26,6 +26,7 @@ parser.add_argument('-r', '--results', help='path to results csv', required=True
 parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=4)
 #confusion matrix path direction; recommended in README.md to direct to 'results' folder
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
+parser.add_argument('-a', '--curve', help='path for roc curve', required=False, default='outputROC.png')
 
 if __name__ == '__main__':
     #parser arguments assigned to args
