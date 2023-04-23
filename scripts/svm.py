@@ -8,7 +8,7 @@ import json
 from modelObject import store
 from storePerformance import storeIt
 from accuracy import accuracy
-from accuracy import confusionMat 
+from accuracy import confusionMat, roc
 
 #argparser allows for command line inputs to specify parameters and data paths
 parser = argparse.ArgumentParser(description='run SVM script')
