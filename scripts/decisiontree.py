@@ -8,9 +8,8 @@ import json
 from modelObject import store
 from storePerformance import storeIt
 from accuracy import accuracy
-from accuracy import confusionMat
+from accuracy import confusionMat, roc
 from backwardselection import importances
-
 
 parser = argparse.ArgumentParser(description='Run Decision Tree script')
 parser.add_argument('-i', '--input', help='input folder path for data', required=True)
