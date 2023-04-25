@@ -17,7 +17,7 @@ parser.add_argument('-c', '--crossfolds', help='number of crossfolds', required=
 parser.add_argument('-j', '--json', help='json file with parameters for grid search cv', required=True)
 parser.add_argument('-o', '--output', help='output pickle file path', required=True)
 parser.add_argument('-r', '--results', help='path to results csv', required=True)
-parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=None)
+parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=4)
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
 parser.add_argument('-a', '--curve', help='path for roc curve', required=False, default='outputROC.png')
 
@@ -30,12 +30,10 @@ if __name__ == '__main__':
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
 
-##Take a look   
-    ### I HAD TO ADD THIS LINE TO RUN ON MY VM IT IS NOT IN THE KNN
+
     y_train = y_train['isFolded'].astype(int).values
     y_test = y_test['isFolded'].astype(int).values
-    #### ABOVE IS ADDED CODE TO RUN 
-##take a look
+
   
     with open(args.json, 'r') as paramFile:
         param_grid = json.load(paramFile)
