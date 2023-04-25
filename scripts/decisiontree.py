@@ -8,7 +8,8 @@ import json
 from modelObject import store
 from storePerformance import storeIt
 from accuracy import accuracy
-from accuracy import confusionMat
+from accuracy import confusionMat, roc
+from backwardselection import importances
 
 parser = argparse.ArgumentParser(description='Run Decision Tree script')
 parser.add_argument('-i', '--input', help='input folder path for data', required=True)
@@ -18,6 +19,8 @@ parser.add_argument('-o', '--output', help='output pickle file path', required=T
 parser.add_argument('-r', '--results', help='path to results csv', required=True)
 parser.add_argument('-n', '--numProcessors', help='number of processers', required=False, default=None)
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
+parser.add_argument('-a', '--curve', help='path for roc curve', required=False, default='outputROC.png')
+
 
 if __name__ == '__main__':
     args = parser.parse_args()
@@ -42,6 +45,17 @@ if __name__ == '__main__':
 
     dt_classifier = g.best_estimator_
     store(dt_classifier, args.output)
-    confusionMat(dt_classifier, x_test, y_test, args.matrix)
-    acc = accuracy(dt_classifier, x_test, y_test)
-    storeIt('Decision Tree', f'{g.best_params_}', acc, args.output, args.results)
+    
+    # calculate AUC and highest threshold
+    area, threshold = roc(dt_classifier, x_test, y_test, args.curve)
+    
+    
+    confusionMat(dt_classifier, x_test, y_test, args.matrix, threshold)
+    
+    f1, acc = accuracy(dt_classifier, x_test, y_test, threshold)
+    
+    
+    # calculate and store variable importances
+    variable_importances = importances(dt_classifier, x_test, y_test).to_dict()
+
+    storeIt('Decision Tree', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, variable_importances)
