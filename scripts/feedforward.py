@@ -85,7 +85,7 @@ def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile, des
     Evaluates trained model on test data set and stores results
     '''
 
-    area, threshold = roc(model, x_test, y_test, rocfile)
+    area, threshold = roc(model, x_test, y_test, rocfile, threshold=0.5)
 
     confusionMat(model, x_test, y_test, cmfile, threshold)
     

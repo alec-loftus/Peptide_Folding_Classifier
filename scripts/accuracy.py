@@ -54,7 +54,7 @@ def confusionMat(model, x_test, y_test, storeFile, threshold=0.5):
         print(f'Confusion Matrix Stored at {storeFile}!')
 
 # plot roc_curve
-def roc(model, x_test, y_test, storeFile):
+def roc(model, x_test, y_test, storeFile, threshold=None):
     try:
         y_pred = list(model.predict_proba(x_test))
         y_pred = np.array([y[1] for y in y_pred])
@@ -63,9 +63,10 @@ def roc(model, x_test, y_test, storeFile):
         print('non-proba')
     fpr, tpr, thresholds = roc_curve(y_test, y_pred, drop_intermediate=False) # fpr, tpr and thresholds for roc curve
     area = auc(fpr, tpr)
-    gmean = np.sqrt(tpr * (1 - fpr))
-    index = np.argmax(gmean)
-    threshold = round(thresholds[index], ndigits = 4)
+    if threshold == None:
+        gmean = np.sqrt(tpr * (1 - fpr))
+        index = np.argmax(gmean)
+        threshold = round(thresholds[index], ndigits = 4)
 
     # plot and save ROC curve
     fig = plt.figure
