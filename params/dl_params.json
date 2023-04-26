@@ -1,0 +1,9 @@
+{
+	"numHiddenLayers": [2, 3, 4],
+	"numHiddenNodes": [8, "None", 10],
+	"activationHidden": ["relu", "sigmoid"],
+	"loss": ["mse", "sparse_categorical_crossentropy"],
+	"rate": [0.001, 0.01],
+	"epochs": [1000, 10000],
+	"batch_size": [20, 40]
+}

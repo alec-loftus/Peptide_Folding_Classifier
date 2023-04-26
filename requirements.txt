@@ -1,6 +1,7 @@
 pandas
 numpy
 scikit-learn
+scikeras
 argparse
 matplotlib
 tensorflow
