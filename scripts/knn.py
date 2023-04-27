@@ -54,7 +54,7 @@ if __name__ == '__main__':
         param_grid = json.load(paramFile)
     #gridsearchCV performed for knn using the parameter grid, refitting according to gridsearchCV from sklearn toolkit, and the designated or default crossfolds and numProcessors
     #assigned to g
-    g = GridSearchCV(knn(), param_grid, refit = True, verbose = 3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
+    g = GridSearchCV(knn(), param_grid, refit = True, verbose = 3, scoring='f1', cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     #fitting is done on the x and y training data
     g.fit(x_train, y_train)
     #best estimator argument is performed on the gridsearchCV and assigned to KNN classifier
@@ -70,4 +70,4 @@ if __name__ == '__main__':
     # record importances
     varaibleImportances = importances(KNNclassifier, x_test, y_test).to_dict()
     #record the model name, best parameters used, and accuracy in the results.csv file
-    storeIt('KNN', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, varaibleImportances)
+    storeIt('KNN', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc, 'crossfoldScore': g.best_score_}, args.output, args.results, varaibleImportances)

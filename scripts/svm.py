@@ -52,7 +52,7 @@ if __name__ == '__main__':
     kernel = dictionary['kernel']
     param_grid = {'C': C, 'gamma': gamma, 'kernel': kernel}
     #gridsearchCV performed using the parameters, refitting, and the specified crossfolds and processors (run with default settings if not specified)
-    g = GridSearchCV(svm.SVC(probability=True), param_grid, refit = True, verbose = 3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
+    g = GridSearchCV(svm.SVC(probability=True), param_grid, refit = True, scoring='f1', verbose = 3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     #fits the gridsearchCV using training data
     g.fit(x_train, y_train)
     
@@ -72,4 +72,4 @@ if __name__ == '__main__':
     # record importances
     varaibleImportances = importances(SVMclassifier, x_test, y_test).to_dict()
     #record the model name, best parameters used, and accuracy in the results.csv file
-    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, varaibleImportances)
+    storeIt('SVM', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc, 'crossfoldScore': g.best_score_}, args.output, args.results, varaibleImportances)

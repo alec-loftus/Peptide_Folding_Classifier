@@ -44,7 +44,7 @@ if __name__ == '__main__':
         param_grid = json.load(paramFile)
 
     # Define and fit the decision tree model with grid search cross-validation
-    g = GridSearchCV(DecisionTreeClassifier(random_state=123), param_grid, refit=True, verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
+    g = GridSearchCV(DecisionTreeClassifier(random_state=123), param_grid, refit=True, scoring='f1', verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     g.fit(x_train, y_train)
     # Save the best model
     dt_classifier = g.best_estimator_
@@ -62,4 +62,4 @@ if __name__ == '__main__':
     # Calculate and store variable importances
     variable_importances = importances(dt_classifier, x_test, y_test).to_dict()
 
-    storeIt('Decision Tree', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, variable_importances)
+    storeIt('Decision Tree', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc, 'crossfoldScore': g.best_score_}, args.output, args.results, variable_importances)

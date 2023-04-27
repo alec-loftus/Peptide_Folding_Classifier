@@ -44,7 +44,7 @@ if __name__ == '__main__':
         param_grid = json.load(paramFile)
 
     # Perform grid search CV to find best random forest model
-    g = GridSearchCV(RandomForestClassifier(random_state=168), param_grid, refit=True, verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
+    g = GridSearchCV(RandomForestClassifier(random_state=168), param_grid, refit=True, scoring='f1', verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     g.fit(x_train, y_train)
     
     # Get best random forest model from grid search
@@ -66,4 +66,4 @@ if __name__ == '__main__':
     # calculate and store variable importances
     variable_importances = importances(rf_classifier, x_test, y_test).to_dict()
 
-    storeIt('Random Forest', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, variable_importances)
+    storeIt('Random Forest', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc, 'crossfoldScore': g.best_score_}, args.output, args.results, variable_importances)
