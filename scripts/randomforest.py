@@ -1,3 +1,4 @@
+# Import necessary libraries 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 import numpy as np
@@ -5,12 +6,14 @@ import pandas as pd
 import os
 import argparse
 import json
+# Import functions from other files
 from modelObject import store
 from storePerformance import storeIt
 from accuracy import accuracy
 from accuracy import confusionMat, roc
 from backwardselection import importances
 
+# Parse command line arugments
 parser = argparse.ArgumentParser(description='Run Random Forest script')
 parser.add_argument('-i', '--input', help='input folder path for data', required=True)
 parser.add_argument('-c', '--crossfolds', help='number of crossfolds', required=False, default=5)
@@ -21,28 +24,32 @@ parser.add_argument('-n', '--numProcessors', help='number of processers', requir
 parser.add_argument('-m', '--matrix', help='confusion matrix path', required=True)
 parser.add_argument('-a', '--curve', help='path for roc curve', required=False, default='outputROC.png')
 
+# If this file is being run directly, parse the command line arguments 
 if __name__ == '__main__':
     args = parser.parse_args()
+    # Load data from input folder
     dataPath = args.input
     x_train = pd.read_csv(os.path.join(dataPath, './x_train.csv'))
     y_train = pd.read_csv(os.path.join(dataPath, './y_train.csv'))
     x_test = pd.read_csv(os.path.join(dataPath, './x_test.csv'))
     y_test = pd.read_csv(os.path.join(dataPath, './y_test.csv'))
     
-    
+    # Convert target variable to binary integers
     y_train = y_train['isFolded'].astype(int).values
     y_test = y_test['isFolded'].astype(int).values
      
 
-
+    # Load parameters for grid search CV from JSONN file
     with open(args.json, 'r') as paramFile:
         param_grid = json.load(paramFile)
 
+    # Perform grid search CV to find best random forest model
     g = GridSearchCV(RandomForestClassifier(random_state=168), param_grid, refit=True, verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     g.fit(x_train, y_train)
     
-    
+    # Get best random forest model from grid search
     rf_classifier = g.best_estimator_
+    # Save best random forest model to file
     store(rf_classifier, args.output)
     
     
