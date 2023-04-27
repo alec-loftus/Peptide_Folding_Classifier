@@ -2,7 +2,7 @@
 	"numHiddenLayers": [2, 3, 4],
 	"numHiddenNodes": ["None", 10, 12],
 	"activationHidden": ["sigmoid", "relu"],
-	"loss": ["sparse_categorical_crossentropy", "mse"],
+	"loss": ["binary_crossentropy", "mse"],
 	"rate": [0.01, 0.001],
 	"epochs": [100, 1000],
 	"batch_size": [20, 30, 40]

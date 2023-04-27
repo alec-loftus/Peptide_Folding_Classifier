@@ -41,7 +41,7 @@ parser.add_argument('-f', '--folds', help='how many folds for crossfold validati
 # options for roc file storage
 parser.add_argument('-c', '--curve', help='file path to store ROC curve', required=False, default='./outputROC.png')
 
-def createIt(inputSize=10, numHiddenLayers=2, numHiddenNodes='None', activationHidden='relu', optimizer='adam', loss='mse', rate=0.01):
+def createIt(inputSize=10, numHiddenLayers=2, numHiddenNodes='None', activationHidden='relu', optimizer='adam', loss="binary_crossentropy", rate=0.01):
     '''
     Creates model layers and assorts them together
     '''
@@ -77,7 +77,7 @@ def hyperparameterTuning(function, x_train, y_train, param_grid, inputSize, cv, 
     '''
     Selects best model from a park of models with a varied combindation of hyperparameters as specified by the user
     '''
-    model = KerasClassifier(model=function, inputSize=inputSize, numHiddenLayers=2, numHiddenNodes='None', activationHidden='relu', optimizer='adam', loss='mse', rate=0.01)
+    model = KerasClassifier(model=function, inputSize=inputSize, numHiddenLayers=2, numHiddenNodes='None', activationHidden='relu', optimizer='adam', loss="binary_crossentropy", rate=0.01)
     g = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=n_jobs, cv=cv, scoring=scoring, refit=True, verbose=3)
     results = g.fit(x_train, y_train)
 

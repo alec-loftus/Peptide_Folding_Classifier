@@ -1,0 +1,9 @@
+{
+	"numHiddenLayers": [2, 4],
+	"numHiddenNodes": [10, 12],
+	"activationHidden": ["sigmoid", "relu"],
+	"loss": ["mse"],
+	"rate": [0.01],
+	"epochs": [10],
+	"batch_size": [20]
+}
