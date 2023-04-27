@@ -35,6 +35,9 @@ parser.add_argument('-m', '--matrix', help='path to matrix file; must be png', r
 # list of options of hyperparameters for tuning
 parser.add_argument('-t', '--tuninghyperparameters', help='json file with lists of hyperparameters for each option (update with types that can be played around with)', required=False, default=None)
 
+# option to chage the number of folds to fit against
+parser.add_argument('-f', '--folds', help='how many folds for crossfold validation selection', required=False, default=5)
+
 # options for roc file storage
 parser.add_argument('-c', '--curve', help='file path to store ROC curve', required=False, default='./outputROC.png')
 
@@ -70,7 +73,7 @@ def train(model, x_train, y_train, x_test, y_test, epochs=1000, batch_size=20):
     model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, validation_data=(x_test, y_test))
     
 
-def hyperparameterTuning(function, x_train, y_train, param_grid, inputSize, cv=5, n_jobs=6, scoring='f1'):
+def hyperparameterTuning(function, x_train, y_train, param_grid, inputSize, cv, n_jobs=6, scoring='f1'):
     '''
     Selects best model from a park of models with a varied combindation of hyperparameters as specified by the user
     '''
@@ -78,9 +81,9 @@ def hyperparameterTuning(function, x_train, y_train, param_grid, inputSize, cv=5
     g = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=n_jobs, cv=cv, scoring=scoring, refit=True, verbose=3)
     results = g.fit(x_train, y_train)
 
-    return results.best_estimator_, results.best_params_
+    return results.best_estimator_, results.best_params_, results.best_score_
 
-def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile, description="simple feed forward model"):
+def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile, crossfoldScore=None, description="simple feed forward model"):
     '''
     Evaluates trained model on test data set and stores results
     '''
@@ -95,7 +98,7 @@ def evaluate(model, x_test, y_test, resultsFile, storepath, cmfile, rocfile, des
 
     varaibleImportances = importances(model, x_test, y_test).to_dict()
 
-    storeIt('DLModel', description, {'f1score': f1, 'regularAccuracy': acc, 'AUC': area}, storepath, resultsFile, varaibleImportances)
+    storeIt('DLModel', description, {'f1score': f1, 'regularAccuracy': acc, 'AUC': area, 'crossfoldScore': crossfoldScore}, storepath, resultsFile, varaibleImportances)
 
 if __name__ == '__main__':
     
@@ -118,8 +121,8 @@ if __name__ == '__main__':
     if args.tuninghyperparameters != None:
         with open(args.tuninghyperparameters) as file:
             d = json.load(file)
-        model, params = hyperparameterTuning(createIt, x_train, y_train, d, iSize)
-        evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve, description=params)
+        model, params, score = hyperparameterTuning(createIt, x_train, y_train, d, iSize, int(args.folds))
+        evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve, score, description=params)
 
     else:
         # create a model shell

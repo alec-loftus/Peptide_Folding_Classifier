@@ -62,4 +62,4 @@ if __name__ == '__main__':
     # Calculate and store variable importances
     variable_importances = importances(dt_classifier, x_test, y_test).to_dict()
 
-    storeIt('Decision Tree', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc}, args.output, args.results, variable_importances)
+    storeIt('Decision Tree', f'{g.best_params_}', {'AUC': area, 'f1score': f1, 'regularAccuracy': acc, 'crossfoldScore': g.best_score_}, args.output, args.results, variable_importances)
