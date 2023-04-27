@@ -44,7 +44,7 @@ if __name__ == '__main__':
         param_grid = json.load(paramFile)
 
     # Perform grid search CV to find best random forest model
-    g = GridSearchCV(RandomForestClassifier(random_state=168), param_grid, refit=True, verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
+    g = GridSearchCV(RandomForestClassifier(random_state=168), param_grid, refit=True, scoring='f1', verbose=3, cv=int(args.crossfolds), n_jobs=int(args.numProcessors))
     g.fit(x_train, y_train)
     
     # Get best random forest model from grid search
