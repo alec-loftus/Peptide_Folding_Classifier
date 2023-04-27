@@ -122,7 +122,7 @@ if __name__ == '__main__':
         with open(args.tuninghyperparameters) as file:
             d = json.load(file)
         model, params, score = hyperparameterTuning(createIt, x_train, y_train, d, iSize, int(args.folds))
-        evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve, score, description=params)
+        evaluate(model, x_test, y_test, args.results, args.output, args.matrix, args.curve, crossfoldScore=score, description=params)
 
     else:
         # create a model shell
