@@ -1,9 +1,9 @@
 {
-	"numHiddenLayers": [3, 4],
-	"numHiddenNodes": ["None", 10, 12],
+	"numHiddenLayers": [2, 3, 4],
+	"numHiddenNodes": [9, 10, 11, 12],
 	"activationHidden": ["sigmoid", "relu", "tanh"],
 	"lossType": ["binary_crossentropy", "mse"],
 	"rate": [0.01, 0.001],
 	"epochs": [100, 1000],
-	"batch_size": [20, 30, 40]
+	"batch_size": [10, 20, 30]
 }
