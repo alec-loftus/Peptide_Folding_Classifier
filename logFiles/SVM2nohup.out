@@ -1,4 +1,3 @@
-
 Fitting 5 folds for each of 50 candidates, totalling 250 fits
 /usr/local/lib/python3.10/dist-packages/sklearn/utils/validation.py:1143: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
   y = column_or_1d(y, warn=True)
