@@ -16,10 +16,10 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 
 To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input.
 
-In order to run analysis, the following is an example of how to run a model and store its results:
+In order to run analysis, the following is an example of how to run a model and store its results, with optional flags and inputs bracketed:
 
 ```
-nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r   RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
+nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
 ```
 
 Example test run of a model script:
