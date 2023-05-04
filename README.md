@@ -1,5 +1,5 @@
 # Peptide_Folding_Classifier
-We seek a classifier that will predict if a protein sequence (+3D coordinates) will fold. In this repository we are testing a variety of non-deep machine learning models to evaluate the folding propensity of IDPs. Simulated IDP data was provided by Dr. Peter Kekenes-Huskey for use in training models. Scikit-learn was used to train the ML models on the datasets. The data.py script generated training and testing subsets of data for use, which are stored in the 'splitData' folder.
+We seek a classifier that will predict if a protein sequence (+3D coordinates) will fold. In this repository we test a variety of non-deep machine learning models and a deep learning model to evaluate the folding propensity of intrinsically disordered proteins (IDP)s. Simulated IDP data was provided by Dr. Peter Kekenes-Huskey for use in training models. Scikit-learn was used to train the ML models on the datasets. The data.py script generated training and testing subsets of data for use, which are stored in the 'splitData' folder.
 
 # Installing Packages
 The necessary packages are listed in the 'requirements.txt' file and can be installed together by calling that file with your installer tool. Otherwise each tool can also be installed individually/manually.
@@ -11,6 +11,8 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 2. Then, install packages with the following command: **pip3 install -r requirements.txt**
 
 # Running the scripts
+
+To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input.
 
 In order to run analysis, the following is an example of how to run a model and store its results:
 
@@ -41,7 +43,7 @@ nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/s
 
 Results are stored in the results folder and model object in the models folder
 
-The raw datasets provided can be found in the 'data' folder. These datasets were the input files for generating the training and testing models in the 'data.py' file. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
+The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
 
 # Parameters
