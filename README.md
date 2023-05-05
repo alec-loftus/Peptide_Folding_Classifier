@@ -80,18 +80,18 @@ nohup python3 scripts/feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MA
     - -h, --help            show this help message and exit
     - -i INPUT, --input INPUT
                        input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs
-   - -o OUTPUT, --output OUTPUT
+    - -o OUTPUT, --output OUTPUT
                         output file for model object; must be pkl
-   - -r RESULTS, --results RESULTS
+    - -r RESULTS, --results RESULTS
                         path to results.csv (must have Name, Description, Metric, Path)
-   - -m MATRIX, --matrix MATRIX
+    - -m MATRIX, --matrix MATRIX
                         path to matrix file; must be png
-   - -t TUNINGHYPERPARAMETERS, --tuninghyperparameters TUNINGHYPERPARAMETERS
+    - -t TUNINGHYPERPARAMETERS, --tuninghyperparameters TUNINGHYPERPARAMETERS
                         json file with lists of hyperparameters for each option (update with types that can be played
                         around with)
-   - -f FOLDS, --folds FOLDS
+    - -f FOLDS, --folds FOLDS
                         how many folds for crossfold validation selection
-   - -c CURVE, --curve CURVE
+    - -c CURVE, --curve CURVE
                         file path to store ROC curve
 
 ## Run all default models at once (probably around minimum of 25 processors)
