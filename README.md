@@ -18,7 +18,7 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 
 Each example below assumes you run from the main project directory; if not please change paths on the commands.
 
-## Prepare Data:
+## Prepare Data
 
 To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. 
 
@@ -45,7 +45,7 @@ nohup python3 scripts/data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t TH
 
 Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
-## Run one model at a time:
+## Run one model at a time
 
 Example test run of a model script:
 
@@ -94,7 +94,7 @@ nohup python3 scripts/feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MA
     -c CURVE, --curve CURVE
                         file path to store ROC curve
 
-## Run all default models at once (probably around minimum of 25 processors):
+## Run all default models at once (probably around minimum of 25 processors)
 
 ```
 ./example.bash
@@ -104,7 +104,7 @@ Ensure this file is executable. On linux, you can make a file executable with th
 chmod +x path/to/example.bash
 ```
 
-## Output:
+## Output
 
 Results are stored in the results folder and model object in the models folder. Confusion matrices and ROC curves can be saved wherever user prefers but have dedicated folders in results. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
 
