@@ -27,7 +27,7 @@ nohup python3 scripts/data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t TH
 ```
 
 - options:
-  - -h, --help            show this help message and exit
+  - -h, --help          show this help message and exit
   - -i INPUT, --input INPUT
                         input path to data folder
   - -o OUTPUT, --output OUTPUT
@@ -79,7 +79,7 @@ nohup python3 scripts/feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MA
   - options for deep learning script (feedforward):
     - -h, --help            show this help message and exit
     - -i INPUT, --input INPUT
-                       input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs
+                        input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs
     - -o OUTPUT, --output OUTPUT
                         output file for model object; must be pkl
     - -r RESULTS, --results RESULTS
