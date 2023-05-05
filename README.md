@@ -16,7 +16,14 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 
 # Running the scripts (each example below assumes you run from the main project directory; if not please change paths on the commands):
 
-To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder. Example data is already normalized and split in the splitData folder.
+## Prepare Data:
+To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. 
+
+'''
+'''
+- options:
+
+Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
 ## Run one model at a time:
 
