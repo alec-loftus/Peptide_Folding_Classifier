@@ -21,7 +21,7 @@ To generate splitData from a different dataset, the data.py script can be run to
 In order to run analysis, the following is an example of how to run a model and store its results, with optional flags and inputs bracketed:
 
 ```
-nohup python3 svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
+nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
 ```
 
 Example test run of a model script:
@@ -46,7 +46,7 @@ nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/s
     - -m MATRIX, --matrix MATRIX
                           confusion matrix path (stores confusion matrix for basic evaluation)
 
-Results are stored in the results folder and model object in the models folder
+Results are stored in the results folder and model object in the models folder. The results.csv must already be created with the following headers exactly: 
 
 The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
