@@ -105,7 +105,7 @@ chmod +x path/to/example.bash
 
 Results are stored in the results folder and model object in the models folder. Confusion matrices and ROC curves can be saved wherever user prefers but have dedicated folders in results. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
 
-# Parameters
+## Parameters
 
 As explained above in the options, each model takes an input of its respective .json paramaters file. Viewing the .json file in the 'params' folder will show the parameters we have set for our data. If you wish to change the parameters, you can do so by editing the model's .json file or by creating an entirely new one and calling that from the command line instead.
 
