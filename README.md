@@ -46,7 +46,7 @@ nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/s
     - -m MATRIX, --matrix MATRIX
                           confusion matrix path (stores confusion matrix for basic evaluation)
 
-Results are stored in the results folder and model object in the models folder. The results.csv must already be created with the following headers exactly: 
+Results are stored in the results folder and model object in the models folder. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
 
 The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
@@ -54,3 +54,10 @@ The raw datasets provided can be found in the 'data' folder. These datasets were
 # Parameters
 
 As explained above in the options, each model takes an input of its respective .json paramaters file. Viewing the .json file in the 'params' folder will show the parameters we have set for our data. If you wish to change the parameters, you can do so by editing the model's .json file or by creating an entirely new one and calling that from the command line instead.
+
+# Future Work
+- Combine ROC curves for multiple models
+- Create results.csv without having user first create it
+- Add processor adjustment flag to deep learning model
+- Allow for even greater model flexibility (i.e. different sized layers) in deep learning
+- Recurrent Neural Networks for Timeseries Prediction
