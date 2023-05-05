@@ -14,9 +14,12 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
     - activate the viritual environment: **source venv/bin/activate**
 2. Then, install packages with the following command: **pip3 install -r requirements.txt**
 
-# Running the scripts (each example below assumes you run from the main project directory; if not please change paths on the commands):
+# Running the scripts 
+
+Each example below assumes you run from the main project directory; if not please change paths on the commands.
 
 ## Prepare Data:
+
 To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. 
 
 ```
