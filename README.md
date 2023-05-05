@@ -20,8 +20,25 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. 
 
 '''
+data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t THRESHOLD] [-d [DATA ...]] -p PREDICTINGCOLUMN [-n NEWLABEL]
 '''
+
 - options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        input path to data folder
+  -o OUTPUT, --output OUTPUT
+                        output folder path for test/train csvs
+  -s SPLITPERCENT, --splitpercent SPLITPERCENT
+                        percentage of data to store as test
+  -t THRESHOLD, --threshold THRESHOLD
+                        scoring threshold
+  -d [DATA ...], --data [DATA ...]
+                        list of column names of data to input
+  -p PREDICTINGCOLUMN, --predictingColumn PREDICTINGCOLUMN
+                        name of column to predict off of
+  -n NEWLABEL, --newLabel NEWLABEL
+                        new label for scoring column
 
 Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
 
@@ -38,8 +55,6 @@ For more customizable run, please refer to the following parameters:
 ```
 nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
 ```
-
-
   - options for non-deep learning scripts (SVM, KNN, DT, RF):
     - -i INPUT, --input INPUT
                           input folder path for data (this is the splitData folder)
@@ -56,10 +71,25 @@ nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r 
     - -m MATRIX, --matrix MATRIX
                           confusion matrix path (stores confusion matrix for basic evaluation)
 ```
-
+feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MATRIX] [-t TUNINGHYPERPARAMETERS] [-f FOLDS] [-c CURVE]
 ```
-   - options for deep learning script (DLFF)
-    
+   - options for deep learning script (feedforward):
+    -h, --help            show this help message and exit
+    -i INPUT, --input INPUT
+                        input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs
+    -o OUTPUT, --output OUTPUT
+                        output file for model object; must be pkl
+    -r RESULTS, --results RESULTS
+                        path to results.csv (must have Name, Description, Metric, Path)
+    -m MATRIX, --matrix MATRIX
+                        path to matrix file; must be png
+    -t TUNINGHYPERPARAMETERS, --tuninghyperparameters TUNINGHYPERPARAMETERS
+                        json file with lists of hyperparameters for each option (update with types that can be played
+                        around with)
+    -f FOLDS, --folds FOLDS
+                        how many folds for crossfold validation selection
+    -c CURVE, --curve CURVE
+                        file path to store ROC curve
 
 ## Run all default models at once (probably around minimum of 25 processors):
 
