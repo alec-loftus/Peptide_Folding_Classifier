@@ -1,6 +1,6 @@
 # Peptide_Folding_Classifier
 
-We seek a classifier that will predict if a protein sequence (+3D coordinates) will fold. In this repository we test a variety of non-deep machine learning models and a deep learning model to evaluate the folding propensity of intrinsically disordered proteins (IDP)s. ML Models included in this repository are SVM, DT, RF, KNN, and a deep learning feedforward neural network. Simulated IDP data was provided by Dr. Peter Kekenes-Huskey for use in training models. Scikit-learn was used to train the ML models on the datasets. The data.py script generated training and testing subsets of data for use, which are stored in the 'splitData' folder.
+We have created here a classifier that will predict if a protein sequence will fold. In this repository we test a variety of non-deep machine learning models and a deep learning model to evaluate the folding propensity of intrinsically disordered proteins (IDP)s. ML Models included in this repository are support vector machines (SVM), decision trees (DT), random forests (RF), k-nearest neighbors (KNN), and a deep learning feedforward neural network. Simulated IDP data was provided by Dr. Peter Kekenes-Huskey for use in training models. Scikit-learn was used to train the ML models on the datasets. The data.py script generated training and testing subsets of data for use, which are stored in the 'splitData' folder.
 
 # Installing Packages
 
