@@ -34,13 +34,13 @@ nohup python3 scripts/data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t TH
                         output folder path for test/train csvs
   - -s SPLITPERCENT, --splitpercent SPLITPERCENT
                         percentage of data to store as test
-  -t THRESHOLD, --threshold THRESHOLD
+  - -t THRESHOLD, --threshold THRESHOLD
                         scoring threshold
-  -d [DATA ...], --data [DATA ...]
+  - -d [DATA ...], --data [DATA ...]
                         list of column names of data to input
-  -p PREDICTINGCOLUMN, --predictingColumn PREDICTINGCOLUMN
+  - -p PREDICTINGCOLUMN, --predictingColumn PREDICTINGCOLUMN
                         name of column to predict off of
-  -n NEWLABEL, --newLabel NEWLABEL
+  - -n NEWLABEL, --newLabel NEWLABEL
                         new label for scoring column
 
 Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
