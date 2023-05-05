@@ -101,9 +101,9 @@ Ensure this file is executable. On linux, you can make a file executable with th
 chmod +x path/to/example.bash
 ```
 
-## output:
+## Output:
 
-Results are stored in the results folder and model object in the models folder. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
+Results are stored in the results folder and model object in the models folder. Confusion matrices and ROC curves can be saved wherever user prefers but have dedicated folders in results. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
 
 # Parameters
 
