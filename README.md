@@ -19,9 +19,9 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
 ## Prepare Data:
 To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. 
 
-'''
-data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t THRESHOLD] [-d [DATA ...]] -p PREDICTINGCOLUMN [-n NEWLABEL]
-'''
+```
+nohup python3 scripts/data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t THRESHOLD] [-d [DATA ...]] -p PREDICTINGCOLUMN [-n NEWLABEL] &
+```
 
 - options:
   -h, --help            show this help message and exit
@@ -71,7 +71,7 @@ nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r 
     - -m MATRIX, --matrix MATRIX
                           confusion matrix path (stores confusion matrix for basic evaluation)
 ```
-feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MATRIX] [-t TUNINGHYPERPARAMETERS] [-f FOLDS] [-c CURVE]
+nohup python3 scripts/feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MATRIX] [-t TUNINGHYPERPARAMETERS] [-f FOLDS] [-c CURVE] &
 ```
    - options for deep learning script (feedforward):
     -h, --help            show this help message and exit
@@ -98,7 +98,7 @@ feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MATRIX] [-t TUNINGHYPERP
 ```
 Ensure this file is executable. On linux, you can make a file executable with the following command:
 ```
-chmod +x path/to/file
+chmod +x path/to/example.bash
 ```
 
 ## output:
