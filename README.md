@@ -14,15 +14,11 @@ The necessary packages are listed in the 'requirements.txt' file and can be inst
     - activate the viritual environment: **source venv/bin/activate**
 2. Then, install packages with the following command: **pip3 install -r requirements.txt**
 
-# Running the scripts
+# Running the scripts (each example below assumes you run from the main project directory; if not please change paths on the commands):
 
-To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input.
+To generate splitData from a different dataset, the data.py script can be run to split and properly format datasets for model testing. Alternatively, the model scripts can be run on the provided sample datasets in 'splitData' by calling the folder as the input. The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder. Example data is already normalized and split in the splitData folder.
 
-In order to run analysis, the following is an example of how to run a model and store its results, with optional flags and inputs bracketed:
-
-```
-nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
-```
+## Run one model at a time:
 
 Example test run of a model script:
 
@@ -30,7 +26,14 @@ Example test run of a model script:
 nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/svmTEST.pkl -r results/results.csv -m results/svmTESTCM.png &
 ```
 
-  - options:
+For more customizable run, please refer to the following parameters:
+
+```
+nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r RESULTS [-n NUMPROCESSORS] -m MATRIX &> logFiles/nohupSVM.out &
+```
+
+
+  - options for non-deep learning scripts (SVM, KNN, DT, RF):
     - -i INPUT, --input INPUT
                           input folder path for data (this is the splitData folder)
     - -c CROSSFOLDS, --crossfolds CROSSFOLDS
@@ -45,11 +48,25 @@ nohup python3 scripts/svm.py -i splitData/ -j params/svm_params.json -o models/s
                           number of processers (this is how many processers to use; recommend more because takes long time)
     - -m MATRIX, --matrix MATRIX
                           confusion matrix path (stores confusion matrix for basic evaluation)
+```
+
+```
+   - options for deep learning script (DLFF)
+    
+
+## Run all default models at once (probably around minimum of 25 processors):
+
+```
+./example.bash
+```
+Ensure this file is executable. On linux, you can make a file executable with the following command:
+```
+chmod +x path/to/file
+```
+
+## output:
 
 Results are stored in the results folder and model object in the models folder. The results.csv must already be created with the following headers exactly: **Name,Description,AUC,F1score,Accuracy,crossfoldScore,Path,Importances**
-
-The raw datasets provided can be found in the 'data' folder. These datasets were the input files for the 'data.py' script which generated the training and testing data for model prediction. Replication of the experiment should be done using the files produced, which are the .csv files in the 'splitData' folder.
-
 
 # Parameters
 
@@ -61,3 +78,4 @@ As explained above in the options, each model takes an input of its respective .
 - Add processor adjustment flag to deep learning model
 - Allow for even greater model flexibility (i.e. different sized layers) in deep learning
 - Recurrent Neural Networks for Timeseries Prediction
+- Store weights for deep learning instead of pickle object
