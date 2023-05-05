@@ -110,7 +110,7 @@ Results are stored in the results folder and model object in the models folder. 
 
 ## Parameters
 
-As explained above in the options, each model takes an input of its respective .json paramaters file. Viewing the .json file in the 'params' folder will show the parameters we have set for our data. If you wish to change the parameters, you can do so by editing the model's .json file or by creating an entirely new one and calling that from the command line instead.
+As explained above in the options, each model takes an input of its respective .json paramaters file. Viewing the .json file in the 'params' folder will show the parameters we have set for our data. If you wish to change the parameters, you can do so by editing the model's .json file or by creating an entirely new one and calling that file with the '-j' flag when running a model script.
 
 # Future Work
 - Combine ROC curves for multiple models
