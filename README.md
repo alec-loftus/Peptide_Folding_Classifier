@@ -77,8 +77,8 @@ nohup python3 scripts/svm.py [-h] -i INPUT [-c CROSSFOLDS] -j JSON -o OUTPUT -r 
 nohup python3 scripts/feedforward.py [-h] -i INPUT [-o OUTPUT] -r RESULTS [-m MATRIX] [-t TUNINGHYPERPARAMETERS] [-f FOLDS] [-c CURVE] &
 ```
   - options for deep learning script (feedforward):
-   - -h, --help            show this help message and exit
-   - -i INPUT, --input INPUT
+    - -h, --help            show this help message and exit
+    - -i INPUT, --input INPUT
                        input folder with data (should include scaled/normalized x_train, x_test, y_test, y_train CSVs
    - -o OUTPUT, --output OUTPUT
                         output file for model object; must be pkl
