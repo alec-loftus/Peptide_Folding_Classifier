@@ -27,12 +27,12 @@ nohup python3 scripts/data.py [-h] -i INPUT [-o OUTPUT] [-s SPLITPERCENT] [-t TH
 ```
 
 - options:
-  -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
+  - -h, --help            show this help message and exit
+  - -i INPUT, --input INPUT
                         input path to data folder
-  -o OUTPUT, --output OUTPUT
+  - -o OUTPUT, --output OUTPUT
                         output folder path for test/train csvs
-  -s SPLITPERCENT, --splitpercent SPLITPERCENT
+  - -s SPLITPERCENT, --splitpercent SPLITPERCENT
                         percentage of data to store as test
   -t THRESHOLD, --threshold THRESHOLD
                         scoring threshold
